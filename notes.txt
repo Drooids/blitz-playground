@@ -1,0 +1,9 @@
+Cmake:
+    # For Ubuntu
+    sudo apt-get install cmake
+
+    # For Redhat
+    yum install cmake
+
+    # For Mac OS X with Macports
+    sudo port install cmake
