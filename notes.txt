@@ -15,4 +15,9 @@ Cmake:
     sudo apt-get install mesa-utils-extra libgl1-mesa-dev libglapi-mesa
 
     # Build
-    ./scripts/cmake-make.sh -j8
+        # GNU/Linux
+        ./scripts/cmake-make.sh -j8
+
+        # Windows
+        1. Run the cmake gui and point it to this projects folder, configure and then generate a project using whatever toolchain you want. Tested with visual studio 2015
+        2. Build the project
