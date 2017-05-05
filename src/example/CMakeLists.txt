@@ -1,2 +1,6 @@
 add_executable (game test.cpp)
-# target_link_libraries (game engine)
+
+INCLUDE(FindPkgConfig)
+PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(game ${SDL2_LIBRARIES})
