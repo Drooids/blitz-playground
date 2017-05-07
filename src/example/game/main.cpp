@@ -2,41 +2,21 @@
 #include <SDL.h>
 #include <SDL_main.h>
 
-int main(int argc, char *argv[]) {
-    SDL_Window *win = NULL;
-    SDL_Renderer *renderer = NULL;
-    SDL_Texture *bitmapTex = NULL;
-    SDL_Surface *bitmapSurface = NULL;
-    int posX = 100, posY = 100, width = 320, height = 240;
+#include "deps/Game.h"
+#include <iostream>
 
-    SDL_Init(SDL_INIT_VIDEO);
+Game* g_game;
 
-    win = SDL_CreateWindow("Hello World", posX, posY, width, height, 0);
+int main(int argc, char *argv[])
+{
+    g_game = new Game();
+    g_game->init("Ch 1", 100, 100, 640, 480, SDL_WINDOW_FULLSCREEN);
 
-    renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
-
-    bitmapSurface = SDL_LoadBMP("img/hello.bmp");
-    bitmapTex = SDL_CreateTextureFromSurface(renderer, bitmapSurface);
-    SDL_FreeSurface(bitmapSurface);
-
-    while (1) {
-        SDL_Event e;
-        if (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) {
-                break;
-            }
-        }
-
-        SDL_RenderClear(renderer);
-        SDL_RenderCopy(renderer, bitmapTex, NULL, NULL);
-        SDL_RenderPresent(renderer);
+    while(g_game->running()) {
+        g_game->handleEvents();
+        g_game->update();
+        g_game->render();
     }
 
-    SDL_DestroyTexture(bitmapTex);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(win);
-
-    SDL_Quit();
-
-    return 0;
+    g_game->clean();
 }
