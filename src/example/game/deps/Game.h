@@ -6,6 +6,7 @@
 
 #include <SDL.h>
 #include <SDL_main.h>
+#include <SDL_image.h>
 
 class Game
 {
@@ -17,7 +18,7 @@ public:
 
     /*
         Flags:
-            SDL_WINDOW_FULLSCREEN Make the window fullscreen
+            SDL_WINDOW_FULLSCREEN Make the window full-screen
             SDL_WINDOW_OPENGL Window can be used with as an OpenGL context
             SDL_WINDOW_SHOWN The window is visible
             SDL_WINDOW_HIDDEN Hide the window
@@ -45,8 +46,20 @@ public:
 
 private:
 
+    // SDL
+
     SDL_Window* m_pWindow = NULL;
     SDL_Renderer* m_pRenderer = NULL;
+
+    SDL_Texture *m_pTexture = NULL; // Texture variable
+    SDL_Rect m_sourceRectangle; // First rectangle
+    SDL_Rect m_destinationRectangle; // Another rectangle
+
+    // SDL_image
+
+    // SDL_Surface *image;
+
+    // Other
 
     bool m_bRunning;
 };

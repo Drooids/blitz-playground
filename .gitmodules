@@ -16,3 +16,6 @@
 [submodule "dependencies/imgui"]
 	   path = dependencies/imgui
 	   url = https://github.com/ocornut/imgui.git
+[submodule "dependencies/SDL_image"]
+	path = dependencies/SDL_image
+	url = https://github.com/aduros/SDL_image.git
