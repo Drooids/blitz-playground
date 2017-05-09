@@ -3,7 +3,6 @@
 bool Game::init(const char* title, int xpos, int ypos, int width,
     int height, int flags)
 {
-
     if(SDL_Init(SDL_INIT_EVERYTHING) == 0) {
         m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 
@@ -15,7 +14,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-                SDL_Surface* pTempSurface = IMG_Load("assets/sprites_001.png");
+                SDL_Surface* pTempSurface = IMG_Load("assets/test_002.png");
 
                 if(pTempSurface == NULL) {
                     printf("SDL_Init failed: %s\n", SDL_GetError());

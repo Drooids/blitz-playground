@@ -27,6 +27,8 @@ uname -v = #96-Ubuntu SMP Thu Apr 20 09:55:15 UTC 2017
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
+PATH: /home/dud3/bin
+PATH: /home/dud3/.local/bin
 PATH: /usr/local/sbin
 PATH: /usr/local/bin
 PATH: /usr/sbin
@@ -35,6 +37,10 @@ PATH: /sbin
 PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
+PATH: /snap/bin
+PATH: /usr/lib/jvm/java-8-oracle/bin
+PATH: /usr/lib/jvm/java-8-oracle/db/bin
+PATH: /usr/lib/jvm/java-8-oracle/jre/bin
 
 
 ## ----------- ##
