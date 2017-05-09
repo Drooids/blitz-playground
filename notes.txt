@@ -1,5 +1,5 @@
 Git:
-    git clone --recursive git@github.com:Shervanator/Engine.git
+    git clone --recursive https://github.com/Drooids/blitz-playground.git
 
 Cmake:
     # Link
