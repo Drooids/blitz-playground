@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
+set(CMAKE_VERBOSE_MAKEFILE OFF)
+
 project (blitz-playground)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -26,8 +28,8 @@ add_subdirectory(dependencies)
 set ( SDL2_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL/include )
 set ( SDL2_LIBRARY SDL2 )
 
-set ( SDL2_IMAGE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL_image )
-set ( SDL2_IMAGE_LIBRARY SDL2_IMAGE )
+set ( SDL2_IMAGE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL2_image )
+set ( SDL2_IMAGE_LIBRARY SDL2_image )
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++1y")
 find_package(OpenGL REQUIRED)

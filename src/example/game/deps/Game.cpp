@@ -15,7 +15,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-                SDL_Surface* pTempSurface = SDL_LoadBMP("assets/test_001.bmp");
+                SDL_Surface* pTempSurface = IMG_Load("assets/sprites_001.png");
 
                 if(pTempSurface == NULL) {
                     printf("SDL_Init failed: %s\n", SDL_GetError());
@@ -29,8 +29,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
                 SDL_QueryTexture(m_pTexture, NULL, NULL,
                     &m_sourceRectangle.w, &m_sourceRectangle.h);
 
-                m_destinationRectangle.x = m_sourceRectangle.x = 0;
-                m_destinationRectangle.y = m_sourceRectangle.y = 0;
+                m_destinationRectangle.x = m_sourceRectangle.x = 105;
+                m_destinationRectangle.y = m_sourceRectangle.y = 50;
+
+                m_sourceRectangle.w = 35;
+                m_sourceRectangle.h = 40;
+
                 m_destinationRectangle.w = m_sourceRectangle.w;
                 m_destinationRectangle.h = m_sourceRectangle.h;
 
@@ -58,7 +62,7 @@ void Game::render()
 
 void Game::update()
 {
-
+    m_sourceRectangle.x = 105 + (40 * int(((SDL_GetTicks() / 200) % 5)));
 }
 
 void Game::handleEvents()
