@@ -14,6 +14,9 @@ Cmake:
     # For Mac OS X with Macports
     sudo port install cmake
 
+    # g++
+    sduo apt-get install g++
+
     # OpenGL
     sudo apt-get update
     sudo apt-get install libpng-dev libjpeg-dev libxxf86vm1 libxxf86vm-dev libxi-dev libxrandr-dev
