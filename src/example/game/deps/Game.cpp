@@ -15,7 +15,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-                SDL_Surface* pTempSurface = SDL_LoadBMP("assets/test_001.bmp");
+                SDL_Surface* pTempSurface = IMG_Load("assets/test_001.png");
 
                 if(pTempSurface == NULL) {
                     printf("SDL_Init failed: %s\n", SDL_GetError());

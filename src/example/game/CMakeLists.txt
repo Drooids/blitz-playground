@@ -1,4 +1,5 @@
 find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
 
 include_directories(deps)
 
@@ -12,7 +13,7 @@ target_link_libraries(main ${CMAKE_CURRENT_SOURCE_DIR}/deps)
 
 include_directories(main
     ${SDL2_INCLUDE_DIR}
-    ${SDL2_IMAGE_INCLUDE_DIR}
+    ${SDL2_IMAGE_INCLUDE_DIRS}
 )
 
 target_link_libraries(main
