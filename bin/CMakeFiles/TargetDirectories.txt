@@ -1,0 +1,15 @@
+/home/xubuntu/git/blitz-playground/bin/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/dependencies/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/dependencies/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/dependencies/CMakeFiles/whereami.dir
+/home/xubuntu/git/blitz-playground/bin/src/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/test/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/test/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/test/CMakeFiles/game.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/game/CMakeFiles/edit_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/game/CMakeFiles/rebuild_cache.dir
+/home/xubuntu/git/blitz-playground/bin/src/example/game/CMakeFiles/main.dir

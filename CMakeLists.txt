@@ -7,7 +7,7 @@ project(blitz-playground)
 # Hardware System info
 
 IF (${CMAKE_SYSTEM_PROCESSOR} MATCHES i386|i586|i686)
-    set(BIT_MODE "64bit")
+    set(BIT_MODE "32bit")
 ELSE()
     set(BIT_MODE "64bit")
 ENDIF()
