@@ -13,7 +13,7 @@ gen/
 libs/
 obj/
 local.properties
-*.so
+# *.so
 .vs/
 imgui.ini
 .c9/
