@@ -1,10 +1,7 @@
 Git:
-    # It used to be '--recursive', but it think it to much work
-    # for git to get all the sub-modules and cmake to build them...
-    # For now we'll build the libs manually(probably a script will be added soon)
-    # and include them on dependencies...
-
-    git clone https://github.com/Drooids/blitz-playground.git
+    # Let's keep on using '--recursive' option for now, we'd probably remove it
+    # later on...
+    git clone --recursive https://github.com/Drooids/blitz-playground.git
 
 Cmake:
     # Link
