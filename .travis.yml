@@ -1,6 +1,5 @@
 sudo: required
 before_install:
-  - sudo add-apt-repository ppa:george-edison55/precise-backports --yes
   - sudo apt-get update
   - sudo apt-get install libpng-dev libjpeg-dev libxxf86vm1 libxxf86vm-dev libxi-dev libxrandr-dev
   - sudo apt-get install mesa-common-dev
@@ -15,12 +14,18 @@ language: cpp
 compiler:
   - g++
   
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
+    packages:
+      - cmake
+      - cmake-data
+      
 install:
   # - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   # - mkdir ${DEPS_DIR} && cd ${DEPS_DIR}
   
-  - sudo apt-get install cmake
-   
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
       CMAKE_URL="http://www.cmake.org/files/v3.3/cmake-3.3.2-Linux-x86_64.tar.gz"
