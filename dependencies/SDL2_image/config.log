@@ -541,7 +541,7 @@ configure:12282: result: yes
 configure:12653: checking for ImageIO support
 configure:12655: result: 
 configure:12659: checking jpeglib.h usability
-configure:12659: gcc -c -g -O2 -D_REENTRANT -I/usr/include/SDL2  conftest.c >&5
+configure:12659: gcc -c -g -O2 -D_REENTRANT -I/usr/local/include/SDL2  conftest.c >&5
 conftest.c:56:21: fatal error: jpeglib.h: No such file or directory
 compilation terminated.
 configure:12659: $? = 1
@@ -636,7 +636,7 @@ configure:12659: result: no
 configure:12659: checking for jpeglib.h
 configure:12659: result: no
 configure:12665: checking for jpeg_CreateDecompress in -ljpeg
-configure:12690: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/include/SDL2   conftest.c -ljpeg   -lSDL2 >&5
+configure:12690: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/local/include/SDL2   conftest.c -ljpeg   -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2 >&5
 /usr/bin/ld: cannot find -ljpeg
 collect2: error: ld returned 1 exit status
 configure:12690: $? = 1
@@ -697,7 +697,7 @@ configure:12766: $? = 1
 No package 'libpng' found
 configure:12794: result: no
 configure:12796: checking png.h usability
-configure:12796: gcc -c -g -O2 -D_REENTRANT -I/usr/include/SDL2  conftest.c >&5
+configure:12796: gcc -c -g -O2 -D_REENTRANT -I/usr/local/include/SDL2  conftest.c >&5
 conftest.c:56:17: fatal error: png.h: No such file or directory
 compilation terminated.
 configure:12796: $? = 1
@@ -792,7 +792,7 @@ configure:12796: result: no
 configure:12796: checking for png.h
 configure:12796: result: no
 configure:12802: checking for png_create_read_struct in -lpng
-configure:12827: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/include/SDL2   conftest.c -lpng -lz  -lSDL2 >&5
+configure:12827: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/local/include/SDL2   conftest.c -lpng -lz  -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2 >&5
 /usr/bin/ld: cannot find -lpng
 collect2: error: ld returned 1 exit status
 configure:12827: $? = 1
@@ -838,7 +838,7 @@ configure:12836: result: no
 configure:12920: WARNING: *** Unable to find PNG library (http://www.libpng.org/pub/png/libpng.html)
 configure:12922: WARNING: PNG image loading disabled
 configure:12928: checking tiffio.h usability
-configure:12928: gcc -c -g -O2 -D_REENTRANT -I/usr/include/SDL2  conftest.c >&5
+configure:12928: gcc -c -g -O2 -D_REENTRANT -I/usr/local/include/SDL2  conftest.c >&5
 conftest.c:56:20: fatal error: tiffio.h: No such file or directory
 compilation terminated.
 configure:12928: $? = 1
@@ -933,7 +933,7 @@ configure:12928: result: no
 configure:12928: checking for tiffio.h
 configure:12928: result: no
 configure:12934: checking for TIFFClientOpen in -ltiff
-configure:12959: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/include/SDL2   conftest.c -ltiff -lz  -lSDL2 >&5
+configure:12959: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/local/include/SDL2   conftest.c -ltiff -lz  -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2 >&5
 /usr/bin/ld: cannot find -ltiff
 collect2: error: ld returned 1 exit status
 configure:12959: $? = 1
@@ -994,7 +994,7 @@ configure:13032: $? = 1
 No package 'libwebp' found
 configure:13060: result: no
 configure:13062: checking webp/decode.h usability
-configure:13062: gcc -c -g -O2 -D_REENTRANT -I/usr/include/SDL2  conftest.c >&5
+configure:13062: gcc -c -g -O2 -D_REENTRANT -I/usr/local/include/SDL2  conftest.c >&5
 conftest.c:56:25: fatal error: webp/decode.h: No such file or directory
 compilation terminated.
 configure:13062: $? = 1
@@ -1089,7 +1089,7 @@ configure:13062: result: no
 configure:13062: checking for webp/decode.h
 configure:13062: result: no
 configure:13068: checking for WebPGetDecoderVersion in -lwebp
-configure:13093: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/include/SDL2   conftest.c -lwebp -lm  -lSDL2 >&5
+configure:13093: gcc -o conftest -g -O2 -D_REENTRANT -I/usr/local/include/SDL2   conftest.c -lwebp -lm  -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2 >&5
 /usr/bin/ld: cannot find -lwebp
 collect2: error: ld returned 1 exit status
 configure:13093: $? = 1
@@ -1264,8 +1264,8 @@ lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '\''s/^: \([^ ]*\) $/  {\"\
 lt_cv_sys_global_symbol_to_c_name_address_lib_prefix='sed -n -e '\''s/^: \([^ ]*\) $/  {\"\1\", (void *) 0},/p'\'' -e '\''s/^[ABCDGIRSTW]* \([^ ]*\) \(lib[^ ]*\)$/  {"\2", (void *) \&\2},/p'\'' -e '\''s/^[ABCDGIRSTW]* \([^ ]*\) \([^ ]*\)$/  {"lib\2", (void *) \&\2},/p'\'''
 lt_cv_sys_global_symbol_to_cdecl='sed -n -e '\''s/^T .* \(.*\)$/extern int \1();/p'\'' -e '\''s/^[ABCDGIRSTW]* .* \(.*\)$/extern char \1;/p'\'''
 lt_cv_sys_max_cmd_len=1572864
-pkg_cv_SDL_CFLAGS='-D_REENTRANT -I/usr/include/SDL2'
-pkg_cv_SDL_LIBS=-lSDL2
+pkg_cv_SDL_CFLAGS='-D_REENTRANT -I/usr/local/include/SDL2'
+pkg_cv_SDL_LIBS='-L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2'
 
 ## ----------------- ##
 ## Output variables. ##
@@ -1289,7 +1289,7 @@ AWK='gawk'
 BINARY_AGE='1'
 CC='gcc'
 CCDEPMODE='depmode=gcc3'
-CFLAGS='-g -O2 -D_REENTRANT -I/usr/include/SDL2'
+CFLAGS='-g -O2 -D_REENTRANT -I/usr/local/include/SDL2'
 CPP='gcc -E'
 CPPFLAGS=''
 CYGPATH_W='echo'
@@ -1316,7 +1316,7 @@ LDFLAGS=''
 LIBOBJS=''
 LIBPNG_CFLAGS=''
 LIBPNG_LIBS=''
-LIBS=' -lSDL2'
+LIBS=' -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2'
 LIBTOOL='$(SHELL) $(top_builddir)/libtool'
 LIBWEBP_CFLAGS=''
 LIBWEBP_LIBS=''
@@ -1336,7 +1336,7 @@ NM='/usr/bin/nm -B'
 NMEDIT=''
 OBJC='gcc'
 OBJCDEPMODE='depmode=gcc3'
-OBJCFLAGS='-g -O2 -D_REENTRANT -I/usr/include/SDL2'
+OBJCFLAGS='-g -O2 -D_REENTRANT -I/usr/local/include/SDL2'
 OBJDUMP='objdump'
 OBJEXT='o'
 OTOOL64=''
@@ -1352,8 +1352,8 @@ PATH_SEPARATOR=':'
 PKG_CONFIG='/usr/bin/pkg-config'
 RANLIB='ranlib'
 SDL2_CONFIG='pkg-config sdl2'
-SDL_CFLAGS='-D_REENTRANT -I/usr/include/SDL2'
-SDL_LIBS='-lSDL2'
+SDL_CFLAGS='-D_REENTRANT -I/usr/local/include/SDL2'
+SDL_LIBS='-L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2'
 SDL_VERSION='2.0.0'
 SED='/bin/sed'
 SET_MAKE=''
