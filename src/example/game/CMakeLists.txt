@@ -11,7 +11,7 @@ add_executable (main
 
 include_directories(
     ${SDL2_INCLUDE_DIR}
-    ${SDL2_IMAGE_INCLUDE_DIR}
+    ${SDL2_IMAGE_INCLUDE_DIRS}
 )
 
 target_link_libraries(main

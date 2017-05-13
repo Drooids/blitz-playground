@@ -28,21 +28,22 @@ add_subdirectory(dependencies)
 set ( SDL2_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL/include )
 set ( SDL2_LIBRARY SDL2 )
 
-set ( SDL2_IMAGE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL2_image )
-set ( SDL2_IMAGE_LIBRARY SDL2_image )
+# set ( SDL2_IMAGE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/SDL_image )
+# set ( SDL2_IMAGE_LIBRARY SDL2_IMAGE )
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++1y")
+
 find_package(OpenGL REQUIRED)
 
 set(BLITZ_LIBS
     ${OPENGL_LIBRARY}
     ${SDL2_LIBRARY}
-    ${SDL2_IMAGE_LIBRARY}
+    # ${SDL2_IMAGE_LIBRARY}
 )
 
 set(BLITZ_INCLUDES
     ${SDL2_INCLUDE_DIR}
-    ${SDL2_IMAGE_INCLUDE_DIR}
+    # ${SDL2_IMAGE_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/
 )
 
