@@ -12,7 +12,7 @@ language: cpp
 
 # Compiler selection
 compiler:
-  - g++
+  - gcc
   
 addons:
   apt:
