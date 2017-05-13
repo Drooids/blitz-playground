@@ -1,9 +1,9 @@
 Git:
-    # It used to be '--recursive', but it think it to much work 
+    # It used to be '--recursive', but it think it to much work
     # for git to get all the sub-modules and cmake to build them...
     # For now we'll build the libs manually(probably a script will be added soon)
     # and include them on dependencies...
-    
+
     git clone https://github.com/Drooids/blitz-playground.git
 
 Cmake:
@@ -35,3 +35,7 @@ Cmake:
         # Windows
         1. Run the cmake gui and point it to this projects folder, configure and then generate a project using whatever toolchain you want. Tested with visual studio 2015
         2. Build the project
+
+Some Useful Commands:
+    # Check the arch of a static library
+    objdump -f libSDL2_image.a | grep ^architecture
