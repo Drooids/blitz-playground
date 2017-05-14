@@ -1,4 +1,4 @@
-environment:
+# environment:
   # ...
   
 # branches to build
@@ -11,14 +11,14 @@ branches:
 os: Visual Studio 2015
 
 # scripts that are called at very beginning, before repo cloning
-init:
+# init:
   # - git config --global core.autocrlf input
 
 platform: 
 - x64
 # - Win32
 
-configuration: 
+# configuration: 
 # - Debug
 # - Release
 
@@ -36,12 +36,12 @@ build:
   project: ALL_BUILD.vcxproj      # path to Visual Studio solution or project
 
 # scripts to run after build
-after_build:
+# after_build:
   # ...
 
-artifacts:
+# artifacts:
   # ...
 
-deploy_script:
+# deploy_script:
   # ...
   
