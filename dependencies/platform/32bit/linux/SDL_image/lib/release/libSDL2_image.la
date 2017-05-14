@@ -17,7 +17,7 @@ old_library='libSDL2_image.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -lSDL2'
+dependency_libs=' -L/usr/local/lib /usr/local/lib/libSDL2.la -lm -ldl -lpthread -lrt'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

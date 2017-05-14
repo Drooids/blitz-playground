@@ -32,6 +32,11 @@ message("-- ARCHITECTURE:           ${BIT_MODE}")
 message("-- OS:                     ${OS}")
 message("-- SDL2: ${SDL2}")
 
+message(STATUS "CMAKE_SYSTEM_NAME          = ${CMAKE_SYSTEM_NAME}"         )
+message(STATUS "CMAKE_CXX_COMPILER_ID      = ${CMAKE_CXX_COMPILER_ID}"     )
+message(STATUS "CMAKE_CXX_COMPILER_VERSION = ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "CMAKE_COMPILER_IS_GNUCXX   = ${CMAKE_COMPILER_IS_GNUCXX}"  )
+
 # Development/Production
 # TODO Somehow we need to pass this value as an argument to cmake command
 set(DEBUG_MODE "release")
