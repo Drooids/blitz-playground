@@ -1,6 +1,6 @@
 # environment:
   # ...
-  
+
 # branches to build
 branches:
   # whitelist
@@ -14,11 +14,11 @@ os: Visual Studio 2015
 # init:
   # - git config --global core.autocrlf input
 
-platform: 
+platform:
 - x64
 # - Win32
 
-# configuration: 
+# configuration:
 # - Debug
 # - Release
 
@@ -33,7 +33,7 @@ before_build:
   # - cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=%P%
 
 build:
-  project: ALL_BUILD.vcxproj      # path to Visual Studio solution or project
+  project: bin\ALL_BUILD.vcxproj      # path to Visual Studio solution or project
 
 # scripts to run after build
 # after_build:
@@ -44,4 +44,4 @@ build:
 
 # deploy_script:
   # ...
-  
+
