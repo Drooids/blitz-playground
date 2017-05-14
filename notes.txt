@@ -25,6 +25,11 @@ Cmake:
     sudo apt-get install mesa-common-dev
     sudo apt-get install mesa-utils-extra libgl1-mesa-dev libglapi-mesa
 
+    # Cmake on windows
+    1. Include header files as per default
+    2. When our application runs, the operating system needs to be able to find the dll file.
+       Copy _dependency_.dll and put it either your project's working directory (where the vcxproj file is at), or inside of the system directory. C:\WINDOWS\SYSTEM32 is the 32bit windows system directory and C:\Windows\SysWOW64 is the 64bit system directory of 32bit applications.
+
     # Build
         # GNU/Linux
         ./scripts/cmake-make.sh -j8

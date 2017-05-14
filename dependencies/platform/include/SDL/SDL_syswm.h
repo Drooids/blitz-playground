@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2016 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -25,8 +25,8 @@
  *  Include file for SDL custom system window manager hooks.
  */
 
-#ifndef SDL_syswm_h_
-#define SDL_syswm_h_
+#ifndef _SDL_syswm_h
+#define _SDL_syswm_h
 
 #include "SDL_stdinc.h"
 #include "SDL_error.h"
@@ -106,10 +106,6 @@ typedef struct ANativeWindow ANativeWindow;
 typedef void *EGLSurface;
 #endif
 
-#if defined(SDL_VIDEO_DRIVER_VIVANTE)
-#include "SDL_egl.h"
-#endif
-
 /**
  *  These are the various supported windowing subsystems
  */
@@ -124,8 +120,7 @@ typedef enum
     SDL_SYSWM_WAYLAND,
     SDL_SYSWM_MIR,
     SDL_SYSWM_WINRT,
-    SDL_SYSWM_ANDROID,
-    SDL_SYSWM_VIVANTE
+    SDL_SYSWM_ANDROID
 } SDL_SYSWM_TYPE;
 
 /**
@@ -172,13 +167,6 @@ struct SDL_SysWMmsg
             /* No UIKit window events yet */
         } uikit;
 #endif
-#if defined(SDL_VIDEO_DRIVER_VIVANTE)
-        struct
-        {
-            int dummy;
-            /* No Vivante window events yet */
-        } vivante;
-#endif
         /* Can't have an empty union */
         int dummy;
     } msg;
@@ -201,7 +189,6 @@ struct SDL_SysWMinfo
         {
             HWND window;                /**< The window handle */
             HDC hdc;                    /**< The window device context */
-            HINSTANCE hinstance;        /**< The instance handle */
         } win;
 #endif
 #if defined(SDL_VIDEO_DRIVER_WINRT)
@@ -272,14 +259,6 @@ struct SDL_SysWMinfo
         } android;
 #endif
 
-#if defined(SDL_VIDEO_DRIVER_VIVANTE)
-        struct
-        {
-            EGLNativeDisplayType display;
-            EGLNativeWindowType window;
-        } vivante;
-#endif
-
         /* Can't have an empty union */
         int dummy;
     } info;
@@ -317,6 +296,6 @@ extern DECLSPEC SDL_bool SDLCALL SDL_GetWindowWMInfo(SDL_Window * window,
 #endif
 #include "close_code.h"
 
-#endif /* SDL_syswm_h_ */
+#endif /* _SDL_syswm_h */
 
 /* vi: set ts=4 sw=4 expandtab: */

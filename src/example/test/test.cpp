@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <SDL.h>
-#include <SDL_main.h>
+#include <SDL_image.h>
 
 int main(int argc, char *argv[]) {
     SDL_Window *win = NULL;
