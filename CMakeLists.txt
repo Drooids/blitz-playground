@@ -74,7 +74,7 @@ IF(NOT WINDOWS)
     IF("${CMAKE_SYSTEM}" MATCHES "Linux")
         # SDL
         set(SDL2_INCLUDE_DIR "${DEPENDENCIES}/include/SDL")
-        set(SDL2_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL/lib/${DEBUG_MODE}/SDL2.lib")
+        set(SDL2_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL/lib/${DEBUG_MODE}/libSDL2.so")
 
         # SDL_image
         set(SDL2_IMAGE_INCLUDE_DIR "${DEPENDENCIES}/include/SDL_image")
@@ -95,18 +95,6 @@ IF(WIN32)
     set(SDL2_IMAGE_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL_image/lib/${DEBUG_MODE}/SDL2_image.lib")
     set(SDL2_IMAGE_DLLS "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL_image/dll/${DEBUG_MODE}")
 
-    message("--")
-    message("-- SDL2_INCLUDE_DIR: ${SDL2_INCLUDE_DIR}")
-    message("-- SDL2_LIBRARY: ${SDL2_LIBRARY}")
-    message("-- SDL2_MAIN_LIBRARY: ${SDL2_MAIN_LIBRARY}")
-    message("-- SDL2_TEST_LIBRARY: ${SDL2_TEST_LIBRARY}")
-    message("-- SDL2_IMAGE_DLLS: ${SDL2_DLLS}")
-
-    message("-- SDL2_IMAGE_INCLUDE_DIR: ${SDL2_IMAGE_INCLUDE_DIR}")
-    message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
-    message("-- SDL2_IMAGE_DLLS: ${SDL2_IMAGE_DLLS}")
-    message("--")
-
     # Copy .dll files
     # ${CMAKE_BINARY_DIR}/bin
 
@@ -122,6 +110,21 @@ IF(WIN32)
     #    ${SDL2_IMAGE_DLLS}
     #    $<TARGET_FILE_DIR:main>)
 ENDIF()
+
+message("--")
+message("-- SDL2_INCLUDE_DIR: ${SDL2_INCLUDE_DIR}")
+message("-- SDL2_LIBRARY: ${SDL2_LIBRARY}")
+
+IF(WIN32)
+    message("-- SDL2_MAIN_LIBRARY: ${SDL2_MAIN_LIBRARY}")
+    message("-- SDL2_TEST_LIBRARY: ${SDL2_TEST_LIBRARY}")
+    message("-- SDL2_IMAGE_DLLS: ${SDL2_DLLS}")
+    message("-- SDL2_IMAGE_DLLS: ${SDL2_IMAGE_DLLS}")
+ENDIF()
+
+message("-- SDL2_IMAGE_INCLUDE_DIR: ${SDL2_IMAGE_INCLUDE_DIR}")
+message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
+message("--")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
 
