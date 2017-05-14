@@ -1,8 +1,8 @@
 @echo OFF
 echo.
 
-if not exist mkdir "bin"
-cd "bin"
+if not exist bin mkdir bin
+cd bin
 
 WHERE cmake
 if %ERRORLEVEL% NEQ 0 (
