@@ -23,7 +23,7 @@ echo "Bulding stars now..."
 timeout 5
 
 :: cmake --help for diff. versions of VS or platform
-cmake -G "Visual Studio 14 2015 Win64" "C:\Users\navn\Documents\git\blitz-playground"
+cmake -G "Visual Studio 14 2015 Win64" "../"
 
 :: Add to the path
 :: set PATH=%PATH%;C:\some\path
