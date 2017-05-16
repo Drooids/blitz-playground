@@ -31,14 +31,14 @@ add_custom_command(TARGET main PRE_BUILD
 
 IF(WIN32)
     # SDL
-    add_custom_command(TARGET game PRE_BUILD
+    add_custom_command(TARGET main PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${SDL2_DLLS}
-        $<TARGET_FILE_DIR:game>)
+        $<TARGET_FILE_DIR:main>)
 
     # SDL_image
-    add_custom_command(TARGET game PRE_BUILD
+    add_custom_command(TARGET main PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${SDL2_IMAGE_DLLS}
-        $<TARGET_FILE_DIR:game>)
+        $<TARGET_FILE_DIR:main>)
 ENDIF()
