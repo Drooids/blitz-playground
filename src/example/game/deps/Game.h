@@ -1,6 +1,8 @@
 #ifndef GAME_H_DEFINED
 #define GAME_H_DEFINED
 
+#include "TextureManager.h"
+
 #include <iostream>
 #include <vector>
 
@@ -51,17 +53,12 @@ private:
     SDL_Window* m_pWindow = NULL;
     SDL_Renderer* m_pRenderer = NULL;
 
-    SDL_Texture *m_pTexture = NULL; // Texture variable
-    SDL_Rect m_sourceRectangle; // First rectangle
-    SDL_Rect m_destinationRectangle; // Another rectangle
-
     // SDL_image
-
-    // SDL_Surface *image;
 
     // Other
 
     bool m_bRunning;
+	int m_currentFrame;
 };
 
 typedef Game TheGame;

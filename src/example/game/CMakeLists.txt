@@ -4,6 +4,8 @@ add_executable (main
     main.cpp
     deps/Game.cpp
     deps/Game.h
+    deps/TextureManager.cpp
+    deps/TextureManager.h
     ${SDL2_INCLUDE_DIR}
     ${SDL2_IMAGE_INCLUDE_DIR}
 )
