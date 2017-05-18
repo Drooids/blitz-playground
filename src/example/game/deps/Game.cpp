@@ -13,7 +13,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
                 std::cout << "Successful: Init\n";
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
-				TextureManager::Instance()->load("assets/sprites_001.png", "animate", m_pRenderer);
+				TextureManager::Instance()->load("assets/sprites_002_magefalldown.png", "animate", m_pRenderer);
 
             } else
                 return false;
@@ -33,9 +33,9 @@ void Game::render()
 {
     SDL_RenderClear(m_pRenderer);
 
-	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
+	TheTextureManager::Instance()->draw("animate", 0, 0, 60, 60, m_pRenderer);
 
-	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 1,
+	TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
     m_currentFrame, m_pRenderer);
 
     SDL_RenderPresent(m_pRenderer);
@@ -43,8 +43,7 @@ void Game::render()
 
 void Game::update()
 {
-	// printf("%d\n", m_currentFrame);
-    m_currentFrame = (1 * int(((SDL_GetTicks() / 200) % 5)));
+    m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
 }
 
 void Game::handleEvents()
