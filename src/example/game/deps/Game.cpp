@@ -44,7 +44,7 @@ void Game::render()
 void Game::update()
 {
 	// printf("%d\n", m_currentFrame);
-    m_currentFrame = 105 + (40 * int(((SDL_GetTicks() / 200) % 5)));
+    m_currentFrame = (1 * int(((SDL_GetTicks() / 200) % 5)));
 }
 
 void Game::handleEvents()

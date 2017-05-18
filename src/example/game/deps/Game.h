@@ -1,8 +1,6 @@
 #ifndef GAME_H_DEFINED
 #define GAME_H_DEFINED
 
-#include "TextureManager.h"
-
 #include <stdio.h>
 #include <iostream>
 #include <vector>
@@ -10,6 +8,8 @@
 #include <SDL.h>
 #include <SDL_main.h>
 #include <SDL_image.h>
+
+#include "TextureManager.h"
 
 class Game
 {
