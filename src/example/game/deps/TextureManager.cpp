@@ -17,7 +17,8 @@ SDL_Renderer* pRenderer)
 {
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 
-	if(pTempSurface == 0) {
+	if (pTempSurface == NULL) {
+		printf("SDL_Init failed: %s\n", SDL_GetError());
 		return false;
 	}
 

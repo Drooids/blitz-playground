@@ -70,7 +70,7 @@ add_subdirectory(dependencies)
 
 set(DEPENDENCIES "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/platform")
 
-IF(NOT WINDOWS)
+IF(NOT WIN32)
     IF("${CMAKE_SYSTEM}" MATCHES "Linux")
         # SDL
         set(SDL2_INCLUDE_DIR "${DEPENDENCIES}/include/SDL")
@@ -126,7 +126,31 @@ message("-- SDL2_IMAGE_INCLUDE_DIR: ${SDL2_IMAGE_INCLUDE_DIR}")
 message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
 message("--")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
+IF(NOT WIN32)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
+ENDIF()
+
+IF(MSVC)
+  # StringPooling: true == /GF  false == /GF-
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GF")
+
+  # RuntimeLibrary
+  # 0 (MultiThreaded) == /MT
+  # 1 (MultiThreadedDebug) == /MTd
+  # 2 (MultiThreadedDLL) == /MD
+  # 3 (MultiThreadedDebugDLL) == /MDd
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
+
+  # TreatWChar_tAsBuiltInType: true == /Zc:wchar_t  false == /Zc:wchar_t-
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t")
+
+  # WarningLevel: /W<level 0 to 4> or /Wall
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
+
+  # Detect64BitPortabilityProblems: /Wp64 - Deprecated since VC++ 2010 
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Wp64")
+endif()
 
 find_package(OpenGL REQUIRED)
 

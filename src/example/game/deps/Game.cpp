@@ -13,14 +13,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
                 std::cout << "Successful: Init\n";
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
-
-                SDL_Surface* pTempSurface = IMG_Load("assets/sprites_001.png");
-
-                if(pTempSurface == NULL) {
-                    printf("SDL_Init failed: %s\n", SDL_GetError());
-                    return false;
-                }
-
 				TextureManager::Instance()->load("assets/sprites_001.png", "animate", m_pRenderer);
 
             } else
@@ -51,6 +43,7 @@ void Game::render()
 
 void Game::update()
 {
+	// printf("%d\n", m_currentFrame);
     m_currentFrame = 105 + (40 * int(((SDL_GetTicks() / 200) % 5)));
 }
 
