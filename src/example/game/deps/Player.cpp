@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Player::load(int x, int y, int width, int height, string textureID)
+void Player::load(int x, int y, int width, int height, string textureID)
 {
     GameObject::load(x, y, width, height, textureID);
 }

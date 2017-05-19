@@ -4,6 +4,8 @@
 #include <string>
 #include <SDL.h>
 
+#include "TextureManager.h"
+
 using namespace std;
 
 class GameObject
@@ -24,7 +26,7 @@ protected:
     string m_textureID;
 
     int m_currentFrame;
-    int currentRow;
+    int m_currentRow;
 
     int m_x;
     int m_y;

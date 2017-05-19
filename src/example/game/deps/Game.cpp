@@ -14,10 +14,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
                 std::cout << "Successful: Init\n";
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
 				TheTextureManager::Instance()->load(
                     "assets/sprites_002_magefalldown.png",
                     "animate", m_pRenderer
                 );
+
+				m_go.load(0, 0, 65, 65, "animate");
+				m_player.load(0, 120, 65, 65, "animate");
 
             } else
                 return false;
@@ -42,12 +46,18 @@ void Game::render()
 	TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
     m_currentFrame, m_pRenderer);
 
+	m_go.draw(m_pRenderer);
+	m_player.draw(m_pRenderer);
+
     SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
 {
     m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
+
+	m_go.update();
+	m_player.update();
 }
 
 void Game::handleEvents()
