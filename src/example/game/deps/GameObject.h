@@ -14,10 +14,12 @@ public:
 
 	~GameObject();
 
-    void load(int x, int y, int width, int height, string textureID);
-    void draw(SDL_Renderer* pRenderer);
-    void update();
-    void clean();
+	// The virtual keyword means that when calling this function through a pointer, it uses
+	// the definition from the type of the object itself, not the type of its pointer
+    virtual void load(int x, int y, int width, int height, string textureID);
+    virtual void draw(SDL_Renderer* pRenderer);
+    virtual void update();
+    virtual void clean();
 
 protected:
 

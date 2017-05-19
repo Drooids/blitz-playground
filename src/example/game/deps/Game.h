@@ -42,14 +42,19 @@ public:
     );
 
     void render();
+	void draw();
     void update();
     void handleEvents();
     void clean();
 
     bool running();
 
-	GameObject m_go;
-	Player m_player;
+	// GameObject m_go;
+	// Player m_player;
+
+	GameObject* m_go;
+	GameObject* m_player;
+	vector<GameObject*> m_gameObjects;
 
 private:
 
