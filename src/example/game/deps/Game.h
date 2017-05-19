@@ -1,6 +1,8 @@
 #ifndef GAME_H_DEFINED
 #define GAME_H_DEFINED
 
+#include "Player.h"
+
 #include <stdio.h>
 #include <iostream>
 #include <vector>
@@ -9,12 +11,10 @@
 #include <SDL_main.h>
 #include <SDL_image.h>
 
-#include "TextureManager.h"
-
 class Game
 {
 public:
-    // Game();
+	// Game();
     ~Game();
 
     static Game* Instance();
@@ -46,6 +46,9 @@ public:
     void clean();
 
     bool running();
+
+	GameObject m_go;
+	Player m_player;
 
 private:
 

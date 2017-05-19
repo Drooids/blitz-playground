@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "TextureManager.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int width,
     int height, int flags)
@@ -13,7 +14,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
                 std::cout << "Successful: Init\n";
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
-				TextureManager::Instance()->load("assets/sprites_002_magefalldown.png", "animate", m_pRenderer);
+				TheTextureManager::Instance()->load(
+                    "assets/sprites_002_magefalldown.png",
+                    "animate", m_pRenderer
+                );
 
             } else
                 return false;
