@@ -10,6 +10,8 @@ add_executable (main
 	deps/GameObject.h
 	deps/Player.cpp
 	deps/Player.h
+	deps/Enemy.cpp
+	deps/Enemy.h
     ${SDL2_INCLUDE_DIR}
     ${SDL2_IMAGE_INCLUDE_DIR}
 )

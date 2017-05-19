@@ -23,12 +23,15 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 				// Array of game objects
 				m_go = new GameObject();
 				m_player = new Player();
+				m_enemy = new Enemy();
 
 				m_go->load(0, 0, 65, 65, "animate");
 				m_player->load(0, 120, 65, 65, "animate");
+				m_enemy->load(0, 150, 65, 65, "animate");
 
 				m_gameObjects.push_back(m_go);
 				m_gameObjects.push_back(m_player);
+				m_gameObjects.push_back(m_enemy);
 
 				// m_go.load(0, 0, 65, 65, "animate");
 				// m_player.load(0, 120, 65, 65, "animate");

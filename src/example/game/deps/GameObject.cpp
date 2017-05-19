@@ -24,7 +24,6 @@ void GameObject::draw(SDL_Renderer* pRenderer)
 
 void GameObject::update()
 {
-	m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
     m_x += 1;
 }
 

@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -53,7 +54,9 @@ public:
 	// Player m_player;
 
 	GameObject* m_go;
-	GameObject* m_player;
+	Player* m_player;
+	Enemy* m_enemy;
+
 	vector<GameObject*> m_gameObjects;
 
 private:
