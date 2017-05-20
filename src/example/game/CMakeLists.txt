@@ -1,22 +1,27 @@
 include_directories(deps)
 
+SET(DEPS 
+	deps/Game.cpp
+	deps/Game.h
+	deps/LoaderParams.h
+	deps/TextureManager.cpp
+	deps/TextureManager.h
+	deps/GameObject.cpp
+	deps/GameObject.h
+	deps/SDLGameObject.cpp
+	deps/SDLGameObject.h
+	deps/Player.cpp
+	deps/Player.h
+	deps/Enemy.cpp
+	deps/Enemy.h
+
+)
+
 add_executable (main
     main.cpp
-    deps/Game.cpp
-    deps/Game.h
-	deps/LoaderParams.h
-    deps/TextureManager.cpp
-    deps/TextureManager.h
-    deps/GameObject.cpp
-    deps/GameObject.h
-	deps/SDLGameObject.cpp
-    deps/SDLGameObject.h
-    deps/Player.cpp
-    deps/Player.h
-    deps/Enemy.cpp
-    deps/Enemy.h
-    ${SDL2_INCLUDE_DIR}
-    ${SDL2_IMAGE_INCLUDE_DIR}
+	${DEPS}
+	${SDL2_INCLUDE_DIR}
+	${SDL2_IMAGE_INCLUDE_DIR}
 )
 
 include_directories(
