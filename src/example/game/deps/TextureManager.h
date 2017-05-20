@@ -1,5 +1,5 @@
-#ifndef TEXTURE_H_DEFINED
-#define TEXTURE_H_DEFINED
+#ifndef TEXTUREMANAGER_H_DEFINED
+#define TEXTUREMANAGER_H_DEFINED
 
 #include <iostream>
 #include <string>

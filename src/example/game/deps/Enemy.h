@@ -1,17 +1,21 @@
-#include <string>
-#include <SDL.h>
+#ifndef ENEMY_H_DEFINED
+#define ENEMY_H_DEFINED
 
-#include "GameObject.h"
+#include "LoaderParams.h"
+#include "SDLGameObject.h"
 
 using namespace std;
 
-class Enemy : public GameObject
+class Enemy : public SDLGameObject
 {
 public:
 
-    void load(int x, int y, int width, int height, string textureID);
-    void draw(SDL_Renderer* pRenderer);
-    void update();
-    void clean();
+    Enemy(const LoaderParams* pParams);
+
+    virtual void draw();
+    virtual void update();
+    virtual void clean();
 
 };
+
+#endif

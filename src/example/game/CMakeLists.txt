@@ -4,14 +4,17 @@ add_executable (main
     main.cpp
     deps/Game.cpp
     deps/Game.h
+	deps/LoaderParams.h
     deps/TextureManager.cpp
     deps/TextureManager.h
-	deps/GameObject.cpp
-	deps/GameObject.h
-	deps/Player.cpp
-	deps/Player.h
-	deps/Enemy.cpp
-	deps/Enemy.h
+    deps/GameObject.cpp
+    deps/GameObject.h
+	deps/SDLGameObject.cpp
+    deps/SDLGameObject.h
+    deps/Player.cpp
+    deps/Player.h
+    deps/Enemy.cpp
+    deps/Enemy.h
     ${SDL2_INCLUDE_DIR}
     ${SDL2_IMAGE_INCLUDE_DIR}
 )
@@ -19,7 +22,7 @@ add_executable (main
 include_directories(
     ${SDL2_INCLUDE_DIR}
     ${SDL2_IMAGE_INCLUDE_DIR}
-	"deps"
+    "deps"
 )
 
 target_link_libraries(main
@@ -28,8 +31,8 @@ target_link_libraries(main
 )
 
 IF(WIN32)
-	target_link_libraries(main "${SDL2_MAIN_LIBRARY}")
-	target_link_libraries(main "${SDL2_TEST_LIBRARY}")
+    target_link_libraries(main "${SDL2_MAIN_LIBRARY}")
+    target_link_libraries(main "${SDL2_TEST_LIBRARY}")
 ENDIF()
 
 add_custom_command(TARGET main PRE_BUILD

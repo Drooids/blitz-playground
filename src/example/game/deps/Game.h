@@ -16,7 +16,6 @@
 class Game
 {
 public:
-	// Game();
     ~Game();
 
     static Game* Instance();
@@ -43,35 +42,39 @@ public:
     );
 
     void render();
-	void draw();
+    void draw();
     void update();
     void handleEvents();
     void clean();
 
     bool running();
 
-	// GameObject m_go;
-	// Player m_player;
+    SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
-	GameObject* m_go;
-	Player* m_player;
-	Enemy* m_enemy;
+    // GameObject m_go;
+    // Player m_player;
 
-	vector<GameObject*> m_gameObjects;
+    // GameObject* m_go;
+    // Player* m_player;
+    // Enemy* m_enemy;
+
+    vector<GameObject*> m_gameObjects;
 
 private:
+
+    // Game();
+
+    static Game* s_pInstance;
 
     // SDL
 
     SDL_Window* m_pWindow = NULL;
     SDL_Renderer* m_pRenderer = NULL;
 
-    // SDL_image
-
     // Other
 
     bool m_bRunning;
-	int m_currentFrame;
+    int m_currentFrame;
 };
 
 typedef Game TheGame;

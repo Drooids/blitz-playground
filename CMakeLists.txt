@@ -127,7 +127,7 @@ message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
 message("--")
 
 IF(NOT WIN32)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
 ENDIF()
 
 IF(MSVC)

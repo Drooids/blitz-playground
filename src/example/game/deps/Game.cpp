@@ -1,5 +1,16 @@
 #include "Game.h"
-#include "TextureManager.h"
+// #include "TextureManager.h"
+
+Game* Game::s_pInstance = 0;
+
+ Game* Game::Instance() {
+    if (s_pInstance == 0) {
+        s_pInstance = new Game();
+        return s_pInstance;
+    }
+
+    return s_pInstance;
+};
 
 bool Game::init(const char* title, int xpos, int ypos, int width,
     int height, int flags)
@@ -15,26 +26,34 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-				TheTextureManager::Instance()->load(
-					"assets/sprites_002_magefalldown.png",
-					"animate", m_pRenderer
-				);
+                /*
+                TheTextureManager::Instance()->load(
+                    "assets/sprites_002_magefalldown.png",
+                    "animate", m_pRenderer
+                );
+                */
 
-				// Array of game objects
-				m_go = new GameObject();
-				m_player = new Player();
-				m_enemy = new Enemy();
+                m_gameObjects.push_back(new Player(new LoaderParams(0, 0, 65, 65,
+                    "animate")));
 
-				m_go->load(0, 0, 65, 65, "animate");
-				m_player->load(0, 120, 65, 65, "animate");
-				m_enemy->load(0, 150, 65, 65, "animate");
+                m_gameObjects.push_back(new Enemy(new LoaderParams(0, 100, 65, 65,
+                    "animate")));
 
-				m_gameObjects.push_back(m_go);
-				m_gameObjects.push_back(m_player);
-				m_gameObjects.push_back(m_enemy);
+                // Array of game objects
+                // m_go = new GameObject();
+                // m_player = new Player();
+                // m_enemy = new Enemy();
 
-				// m_go.load(0, 0, 65, 65, "animate");
-				// m_player.load(0, 120, 65, 65, "animate");
+                //  m_go->load(0, 0, 65, 65, "animate");
+                // m_player->load(0, 120, 65, 65, "animate");
+                // m_enemy->load(0, 150, 65, 65, "animate");
+
+                // m_gameObjects.push_back(m_go);
+                // m_gameObjects.push_back(m_player);
+                //m_gameObjects.push_back(m_enemy);
+
+                // m_go.load(0, 0, 65, 65, "animate");
+                // m_player.load(0, 120, 65, 65, "animate");
 
             } else
                 return false;
@@ -54,18 +73,18 @@ void Game::render()
 {
     SDL_RenderClear(m_pRenderer);
 
-	// TheTextureManager::Instance()->draw("animate", 0, 0, 60, 60, m_pRenderer);
+    // TheTextureManager::Instance()->draw("animate", 0, 0, 60, 60, m_pRenderer);
 
-	// TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
+    // TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
     // m_currentFrame, m_pRenderer);
 
-	// m_go.draw(m_pRenderer);
-	// m_player.draw(m_pRenderer);
+    // m_go.draw(m_pRenderer);
+    // m_player.draw(m_pRenderer);
 
-	for (vector<GameObject*>::size_type i = 0;
-	i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->draw(m_pRenderer);
-	}
+    for (vector<GameObject*>::size_type i = 0;
+    i != m_gameObjects.size(); i++) {
+        m_gameObjects[i]->draw();
+    }
 
     SDL_RenderPresent(m_pRenderer);
 }
@@ -74,13 +93,13 @@ void Game::update()
 {
     m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
 
-	for (vector<GameObject*>::size_type i = 0;
-	i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->update();
-	}
+    for (vector<GameObject*>::size_type i = 0;
+    i != m_gameObjects.size(); i++) {
+        m_gameObjects[i]->update();
+    }
 
-	// m_go.update();
-	// m_player.update();
+    // m_go.update();
+    // m_player.update();
 }
 
 void Game::handleEvents()

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <SDL.h>
 #include <SDL_main.h>
 
@@ -7,24 +6,25 @@
 
 using namespace std;
 
-Game* g_game;
-
 int main(int argc, char *argv[])
 {
-    g_game = new Game();
-	// SDL_WINDOW_FULLSCREEN
-	// SDL_WINDOW_FULLSCREEN_DESKTOP
-    g_game->init("Ch 1", 100, 100, 640, 480, SDL_WINDOW_BORDERLESS);
+    // SDL_WINDOW_FULLSCREEN
+    // SDL_WINDOW_FULLSCREEN_DESKTOP
+    if(TheGame::Instance()->init("Ch 1", 100, 100, 640, 480, SDL_WINDOW_BORDERLESS)) {
 
-    while(g_game->running()) {
-        g_game->handleEvents();
-        g_game->update();
-        g_game->render();
+        while(TheGame::Instance()->running()) {
+            TheGame::Instance()->handleEvents();
+            TheGame::Instance()->update();
+            TheGame::Instance()->render();
 
-		SDL_Delay(10);
+            SDL_Delay(10);
+        }
+
+    } else {
+        cout << SDL_GetError() << "\n";
     }
 
-    g_game->clean();
+    TheGame::Instance()->clean();
 
     return 0;
 }
