@@ -9,18 +9,18 @@ class GameObject
 {
 public:
 
-    // virtual ~GameObject() {}
+	// virtual ~GameObject() {}
 
-    // The virtual keyword means that when calling this function through a pointer, it uses
-    // the definition from the type of the object itself, not the type of its pointer
-    virtual void draw() = 0;
-    virtual void update() = 0;
-    virtual void clean() = 0;
+	// The virtual keyword means that when calling this function through a pointer, it uses
+	// the definition from the type of the object itself, not the type of its pointer
+	virtual void draw() = 0;
+	virtual void update() = 0;
+	virtual void clean() = 0;
 
 protected:
 
-    GameObject(const LoaderParams* pParams) {}
-    virtual ~GameObject() {}
+	GameObject(const LoaderParams* pParams) {}
+	virtual ~GameObject() {}
 };
 
 #endif

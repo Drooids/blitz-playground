@@ -10,11 +10,11 @@ class Enemy : public SDLGameObject
 {
 public:
 
-    Enemy(const LoaderParams* pParams);
+	Enemy(const LoaderParams* pParams);
 
-    virtual void draw();
-    virtual void update();
-    virtual void clean();
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 
 };
 
