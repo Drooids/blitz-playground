@@ -1,5 +1,5 @@
 #include "Game.h"
-// #include "TextureManager.h"
+#include "TextureManager.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -26,12 +26,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-				/*
 				TheTextureManager::Instance()->load(
 					"assets/sprites_002_magefalldown.png",
 					"animate", m_pRenderer
 				);
-				*/
 
 				m_gameObjects.push_back(new Player(new LoaderParams(0, 0, 65, 65,
 					"animate")));
@@ -74,7 +72,6 @@ void Game::render()
 	SDL_RenderClear(m_pRenderer);
 
 	// TheTextureManager::Instance()->draw("animate", 0, 0, 60, 60, m_pRenderer);
-
 	// TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
 	// m_currentFrame, m_pRenderer);
 
