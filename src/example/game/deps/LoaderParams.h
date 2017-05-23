@@ -7,7 +7,6 @@ using namespace std;
 
 class LoaderParams
 {
-
 public:
 
 	LoaderParams(int x, int y, int width, int height, string textureID) :

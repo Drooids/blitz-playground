@@ -9,8 +9,6 @@ class GameObject
 {
 public:
 
-	// virtual ~GameObject() {}
-
 	// The virtual keyword means that when calling this function through a pointer, it uses
 	// the definition from the type of the object itself, not the type of its pointer
 	virtual void draw() = 0;

@@ -37,22 +37,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 				m_gameObjects.push_back(new Enemy(new LoaderParams(0, 100, 65, 65,
 					"animate")));
 
-				// Array of game objects
-				// m_go = new GameObject();
-				// m_player = new Player();
-				// m_enemy = new Enemy();
-
-				//  m_go->load(0, 0, 65, 65, "animate");
-				// m_player->load(0, 120, 65, 65, "animate");
-				// m_enemy->load(0, 150, 65, 65, "animate");
-
-				// m_gameObjects.push_back(m_go);
-				// m_gameObjects.push_back(m_player);
-				//m_gameObjects.push_back(m_enemy);
-
-				// m_go.load(0, 0, 65, 65, "animate");
-				// m_player.load(0, 120, 65, 65, "animate");
-
 			} else
 				return false;
 
@@ -71,13 +55,6 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 
-	// TheTextureManager::Instance()->draw("animate", 0, 0, 60, 60, m_pRenderer);
-	// TheTextureManager::Instance()->drawFrame("animate", 0, 120, 65, 65, 1,
-	// m_currentFrame, m_pRenderer);
-
-	// m_go.draw(m_pRenderer);
-	// m_player.draw(m_pRenderer);
-
 	for (vector<GameObject*>::size_type i = 0;
 	i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
@@ -94,9 +71,6 @@ void Game::update()
 	i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
-
-	// m_go.update();
-	// m_player.update();
 }
 
 void Game::handleEvents()

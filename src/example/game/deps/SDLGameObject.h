@@ -10,10 +10,7 @@ using namespace std;
 
 class SDLGameObject : public GameObject
 {
-
 public:
-
-	// virtual ~SDLGameObject();
 
 	SDLGameObject(const LoaderParams* pParams);
 
