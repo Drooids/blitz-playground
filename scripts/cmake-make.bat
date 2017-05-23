@@ -22,13 +22,17 @@ if %ERRORLEVEL% NEQ 0 (
 :: cmake --help for diff. versions of VS or platform
 cmake -G "Visual Studio 14 2015 Win64" ".."
 
-if "%1"=="-m" (
-	:: Path to msbuild
-	echo "If you haven't yet, Add the msbuild path to _PATH_(remove underlines) environment."
-	reg.exe query "HKLM\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0" /v MSBuildToolsPath
+:: Check for msbuild
+reg.exe query "HKLM\SOFTWARE\Microsoft\MSBuild\ToolsVersions\4.0" /v MSBuildToolsPath > ms.txt
+set msbuildPath=(FOR /F "eol=; tokens=3* delims=, " %%i in (ms.txt) do @echo %%i %%j)
 
-	set msbuild.exe=
-	for /D %%D in (%SYSTEMROOT%\Microsoft.NET\Framework\v4*) do set msbuild.exe=%%D\MSBuild.exe
+:: Set the path manually
+:: For some reason it doesn't work for now...
+:: SET PATH=%PATH%;%msbuildPath%
+
+if "%1"=="-m" (
+	echo.
+	echo "If you haven't yet, Add the msbuild path to _PATH_(remove underlines) environment."
 
 	msbuild.exe "..\bin\ALL_BUILD.vcxproj" /t:Build
 
@@ -37,6 +41,3 @@ if "%1"=="-m" (
 	echo "%cd%\bin\Debug"
 	echo.
 )
-
-:: Add to the path
-:: set PATH=%PATH%;C:\some\path
