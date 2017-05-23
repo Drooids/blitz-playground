@@ -6,13 +6,6 @@ SDLGameObject(pParams)
 
 }
 
-/*
-void Player::load(int x, int y, int width, int height, string textureID)
-{
-	GameObject::load(x, y, width, height, textureID);
-}
-*/
-
 void Player::draw()
 {
 	SDLGameObject::draw();
