@@ -3,6 +3,8 @@
 #ifndef VECTOR2D_H_DEFINED
 #define VECTOR2D_H_DEFINED
 
+#include <stdio.h>
+
 class Vector2D
 {
 public:
@@ -76,6 +78,11 @@ public:
 		{
 			(*this) *= 1;
 		}
+	}
+
+	void print()
+	{
+		printf("x: %f, y: %f\n", m_x, m_y);
 	}
 
 	// The global operator function is made friend of this class so
