@@ -14,7 +14,8 @@ SET(DEPS
 	deps/Player.h
 	deps/Enemy.cpp
 	deps/Enemy.h
-
+	deps/Vector2D.cpp
+	deps/Vector2D.h
 )
 
 add_executable (main
