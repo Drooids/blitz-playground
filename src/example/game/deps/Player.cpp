@@ -15,7 +15,7 @@ void Player::draw()
 void Player::update()
 {
 	// m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
-	m_x += 1;
+	m_position.setX(m_position.getX() + 1);
 }
 
 void Player::clean()

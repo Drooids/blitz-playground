@@ -3,6 +3,7 @@
 
 #include "LoaderParams.h"
 #include "GameObject.h"
+#include "Vector2D.h"
 
 #include <string>
 
@@ -20,8 +21,7 @@ public:
 
 protected:
 
-	int m_x;
-	int m_y;
+	Vector2D m_position;
 
 	int m_width;
 	int m_height;
