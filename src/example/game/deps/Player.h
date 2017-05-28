@@ -3,6 +3,7 @@
 
 #include "LoaderParams.h"
 #include "SDLGameObject.h"
+#include "InputHandler.h"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ public:
 	virtual void update();
 	virtual void clean();
 
-protected:
-	// ...
+private:
+	void handleInput();
 };
 
 #endif

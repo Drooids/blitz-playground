@@ -52,26 +52,128 @@ void InputHandler::update()
 		switch(event.type) {
 			case SDL_QUIT:
 				TheGame::Instance()->quit();
-			break;
+				break;
 
 			case SDL_KEYDOWN:
 				KEYS[event.key.keysym.sym] = true;
-			break;
+				break;
 
 			case SDL_KEYUP:
 				KEYS[event.key.keysym.sym] = false;
-			break;
+				break;
 
-			default:
-			break;
+			case SDL_JOYAXISMOTION || // type value
+				SDL_JOYBUTTONDOWN ||
+				SDL_JOYBUTTONUP:
+
+				int whichOne = event.jaxis.which; // get which controller
+
+				if (SDL_JOYAXISMOTION) {
+					// Left stick
+
+					// Move left or right
+					// If the X axis changed
+					if (event.jaxis.axis == 0) {
+						if (event.jaxis.value > m_joystickDeadZone) {
+							m_joystickValues[whichOne].first->setX(1);
+						}
+						else if (event.jaxis.value < -m_joystickDeadZone) {
+							m_joystickValues[whichOne].first->setX(-1);
+						}
+						else {
+							m_joystickValues[whichOne].first->setX(0);
+						}
+					}
+
+					// Move up or down
+					// If the Y axis changed
+					if (event.jaxis.axis == 1) {
+						if (event.jaxis.value > m_joystickDeadZone) {
+							m_joystickValues[whichOne].first->setY(1);
+						}
+						else if (event.jaxis.value < -m_joystickDeadZone) {
+							m_joystickValues[whichOne].first->setY(-1);
+						}
+						else {
+							m_joystickValues[whichOne].first->setY(0);
+						}
+					}
+
+					// Right stick
+
+					// Move left or right
+					if (event.jaxis.axis == 3) {
+						if (event.jaxis.value > m_joystickDeadZone) {
+							m_joystickValues[whichOne].second->setY(1);
+						}
+						else if (event.jaxis.value < -m_joystickDeadZone) {
+							m_joystickValues[whichOne].second->setY(-1);
+						}
+						else {
+							m_joystickValues[whichOne].second->setY(0);
+						}
+					}
+
+					// Move up or down
+					if (event.jaxis.axis == 4) {
+						if (event.jaxis.value > m_joystickDeadZone) {
+							m_joystickValues[whichOne].second->setY(1);
+						}
+						else if (event.jaxis.value < -m_joystickDeadZone) {
+							m_joystickValues[whichOne].second->setY(-1);
+						}
+						else {
+							m_joystickValues[whichOne].second->setY(0);
+						}
+					}
+
+				}
+
+				if (SDL_JOYBUTTONDOWN) {
+
+				}
+
+				if (SDL_JOYBUTTONUP) {
+
+				}
+
+				break;
 		}
 
 		if(KEYS[SDLK_ESCAPE]) {
 			TheGame::Instance()->quit();
-			printf("Key: ECS\n");
-			printf("Quiting...\n");
+			std::cout << "Key: ECS\n" << endl;
+			std::cout << "Quiting...\n" << endl;
 		}
 	}
+}
+
+int InputHandler::xvalue(int joy, int stick)
+{
+	if (m_joystickValues.size() > 0) {
+		if (stick == 1) {
+			return m_joystickValues[joy].first->getX();
+		}
+		else if (stick == 2) {
+			return m_joystickValues[joy].second->getX();
+		}
+	}
+
+	return 0;
+}
+
+int InputHandler::yvalue(int joy, int stick)
+{
+	if (m_joystickValues.size() > 0) {
+		if (stick == 1) {
+			return m_joystickValues[joy].first->getY();
+		}
+		else if (stick == 2) {
+			return m_joystickValues[joy].second->getY();
+		}
+	}
+
+	return 0;
 }
 
 void InputHandler::clean()
@@ -82,4 +184,5 @@ void InputHandler::clean()
 		}
 	}
 }
+
 
