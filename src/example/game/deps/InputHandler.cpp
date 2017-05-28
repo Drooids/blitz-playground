@@ -21,6 +21,8 @@ void InputHandler::initializeJoysticks()
 
 			if (SDL_JoystickGetAttached(joy) == SDL_TRUE) {
 				m_joysticks.push_back(joy);
+				m_joystickValues.push_back(std::make_pair(new
+					Vector2D(0, 0), new Vector2D(0, 0))); // add our pair
 			} else {
 				std::cout << SDL_GetError();
 			}
@@ -43,32 +45,31 @@ void InputHandler::update()
 
 	if(SDL_PollEvent(&event)) {
 
-		bool KEYS[322];
-
-		for(int i = 0; i < 322; i++) {
-			KEYS[i] = false;
-		}
-
 		switch(event.type) {
 			case SDL_QUIT:
 				TheGame::Instance()->quit();
 				break;
 
 			case SDL_KEYDOWN:
-				KEYS[event.key.keysym.sym] = true;
+				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
+				m_activeKeys[event.key.keysym.scancode] = true;
 				break;
 
 			case SDL_KEYUP:
-				KEYS[event.key.keysym.sym] = false;
+				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
+				m_activeKeys[event.key.keysym.scancode] = false;
 				break;
 
 			case SDL_JOYAXISMOTION || // type value
 				SDL_JOYBUTTONDOWN ||
 				SDL_JOYBUTTONUP:
 
-				int whichOne = event.jaxis.which; // get which controller
+					int whichOne = event.jaxis.which; // get which controller
+
+					std::cout << "SDL_JOYAXISMOTION || SDL_JOYBUTTONDOWN ..." << endl;
 
 				if (SDL_JOYAXISMOTION) {
+
 					// Left stick
 
 					// Move left or right
@@ -130,17 +131,17 @@ void InputHandler::update()
 				}
 
 				if (SDL_JOYBUTTONDOWN) {
-
+					std::cout << "SDL_JOYBUTTONDOWN" << endl;
 				}
 
 				if (SDL_JOYBUTTONUP) {
-
+					std::cout << "SDL_JOYBUTTONUP" << endl;
 				}
 
 				break;
 		}
 
-		if(KEYS[SDLK_ESCAPE]) {
+		if(m_activeKeys[SDLK_ESCAPE]) {
 			TheGame::Instance()->quit();
 			std::cout << "Key: ECS\n" << endl;
 			std::cout << "Quiting...\n" << endl;
@@ -179,7 +180,7 @@ int InputHandler::yvalue(int joy, int stick)
 void InputHandler::clean()
 {
 	if (m_bJoysticksInitialised) {
-		for (unsigned int i = 0; i < SDL_NumJoysticks(); i++) {
+		for (int i = 0; i < SDL_NumJoysticks(); i++) {
 			SDL_JoystickClose(m_joysticks[i]);
 		}
 	}

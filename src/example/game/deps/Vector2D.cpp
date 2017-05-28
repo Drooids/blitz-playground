@@ -1,8 +1,11 @@
 #include <math.h>
 #include "Vector2D.h"
 
-double Vector2D::length() {
-	return sqrt(m_x * m_x + m_y * m_y);
+float Vector2D::length() {
+	// sqrt returns dobule, let's cast it to float
+	// it doesn't feel right, but let us see
+	// FIX ME
+	return (float)sqrt(m_x * m_x + m_y * m_y);
 }
 
 /*

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 #include <SDL.h>
 #include <SDL_main.h>
@@ -88,6 +89,9 @@ private:
 		Change this value for different type of controllers, such as: ps2|3|4; xbox...
 	*/
 	const int m_joystickDeadZone = 10000;
+
+	// Currently active keys
+	std::map<int, bool> m_activeKeys;
 
 	bool m_bJoysticksInitialised;
 };

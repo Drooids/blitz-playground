@@ -16,7 +16,7 @@ public:
 	void setX(float x) { m_x = x; }
 	void setY(float y) { m_y = y; }
 
-	double length();
+	float length();
 
 	Vector2D operator+(const Vector2D& v2) const
 	{

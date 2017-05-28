@@ -17,9 +17,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 	int height, int flags)
 {
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+
+		// Window
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 
+		// Joystick Input handler
+		TheInputHandler::Instance()->initializeJoysticks();
+
 		if(m_pWindow != 0) {
+
+			// Renderer
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if(m_pRenderer != 0) {
