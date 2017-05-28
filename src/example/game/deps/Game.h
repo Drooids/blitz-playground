@@ -46,6 +46,7 @@ public:
 	void update();
 	void handleEvents();
 	void clean();
+	void quit() { m_bRunning = false; clean(); };
 
 	bool running();
 

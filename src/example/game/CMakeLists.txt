@@ -1,6 +1,6 @@
 include_directories(deps)
 
-SET(DEPS 
+SET(DEPS
 	deps/Game.cpp
 	deps/Game.h
 	deps/LoaderParams.h
@@ -16,6 +16,8 @@ SET(DEPS
 	deps/Enemy.h
 	deps/Vector2D.cpp
 	deps/Vector2D.h
+	deps/InputHandler.cpp
+	deps/InputHandler.h
 )
 
 add_executable (main

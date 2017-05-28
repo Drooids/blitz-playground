@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -75,40 +76,7 @@ void Game::update()
 
 void Game::handleEvents()
 {
-	SDL_Event event;
-
-	if(SDL_PollEvent(&event)) {
-
-		bool KEYS[322];
-
-		for(int i = 0; i < 322; i++) {
-			KEYS[i] = false;
-		}
-
-		switch(event.type) {
-			case SDL_QUIT:
-				m_bRunning = false;
-			break;
-
-			case SDL_KEYDOWN:
-				KEYS[event.key.keysym.sym] = true;
-			break;
-
-			case SDL_KEYUP:
-				KEYS[event.key.keysym.sym] = false;
-			break;
-
-			default:
-			break;
-		}
-
-		if(KEYS[SDLK_ESCAPE]) {
-			clean();
-			m_bRunning = false;
-			printf("Key: ECS\n");
-			printf("Quiting...\n");
-		}
-	}
+	TheInputHandler::Instance()->update();
 }
 
 bool Game::running()
@@ -118,6 +86,7 @@ bool Game::running()
 
 void Game::clean()
 {
+	TheInputHandler::Instance()->clean();
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
