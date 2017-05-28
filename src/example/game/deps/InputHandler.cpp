@@ -41,46 +41,35 @@ void InputHandler::update()
 {
 	SDL_Event event;
 
-	/*
+	if(SDL_PollEvent(&event)) {
 
-		if(SDL_PollEvent(&event)) {
+		bool KEYS[322];
 
-			bool KEYS[322];
-
-			for(int i = 0; i < 322; i++) {
-				KEYS[i] = false;
-			}
-
-			switch(event.type) {
-				case SDL_QUIT:
-					TheGame::Instance()->quit();
-				break;
-
-				case SDL_KEYDOWN:
-					KEYS[event.key.keysym.sym] = true;
-				break;
-
-				case SDL_KEYUP:
-					KEYS[event.key.keysym.sym] = false;
-				break;
-
-				default:
-				break;
-			}
-
-			if(KEYS[SDLK_ESCAPE]) {
-				TheGame::Instance()->quit();
-				printf("Key: ECS\n");
-				printf("Quiting...\n");
-			}
+		for(int i = 0; i < 322; i++) {
+			KEYS[i] = false;
 		}
 
-	*/
+		switch(event.type) {
+			case SDL_QUIT:
+				TheGame::Instance()->quit();
+			break;
 
-	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_QUIT)
-		{
+			case SDL_KEYDOWN:
+				KEYS[event.key.keysym.sym] = true;
+			break;
+
+			case SDL_KEYUP:
+				KEYS[event.key.keysym.sym] = false;
+			break;
+
+			default:
+			break;
+		}
+
+		if(KEYS[SDLK_ESCAPE]) {
 			TheGame::Instance()->quit();
+			printf("Key: ECS\n");
+			printf("Quiting...\n");
 		}
 	}
 }
