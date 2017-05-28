@@ -45,6 +45,8 @@ public:
 	void update();
 	void clean();
 
+	// Joystick
+
 	void initializeJoysticks();
 
 	// of the joystick we want to use, and  the stick is
@@ -56,11 +58,21 @@ public:
 		return m_bJoysticksInitialised;
 	}
 
+	bool getButtonState(int joy, int buttonNumber)
+	{
+		return m_buttonStates[joy][buttonNumber];
+	}
+
+	// Keyboard
+
 private:
 	// InputHandler();
 	~InputHandler();
 
 	static InputHandler* s_pInstance;
+
+
+	// Joystick
 
 	std::vector<SDL_Joystick*> m_joysticks;
 
@@ -89,6 +101,11 @@ private:
 		Change this value for different type of controllers, such as: ps2|3|4; xbox...
 	*/
 	const int m_joystickDeadZone = 10000;
+
+	std::vector<std::vector<bool>> m_buttonStates;
+
+
+	// Keyboard
 
 	// Currently active keys
 	std::map<int, bool> m_activeKeys;

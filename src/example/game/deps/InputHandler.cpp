@@ -20,9 +20,20 @@ void InputHandler::initializeJoysticks()
 			SDL_Joystick* joy = SDL_JoystickOpen(i);
 
 			if (SDL_JoystickGetAttached(joy) == SDL_TRUE) {
+
 				m_joysticks.push_back(joy);
 				m_joystickValues.push_back(std::make_pair(new
 					Vector2D(0, 0), new Vector2D(0, 0))); // add our pair
+
+				// Note: Probably a map would be better
+				std::vector<bool> tempButton;
+
+				// Get the number of joysitck buttons
+				for (int j = 0; j < SDL_JoystickNumButtons(joy); j++) {
+					tempButton.push_back(false);
+				}
+
+				m_buttonStates.push_back(tempButton);
 			} else {
 				std::cout << SDL_GetError();
 			}
@@ -132,10 +143,12 @@ void InputHandler::update()
 
 				if (SDL_JOYBUTTONDOWN) {
 					std::cout << "SDL_JOYBUTTONDOWN" << endl;
+					m_buttonStates[whichOne][event.jbutton.button] = true;
 				}
 
 				if (SDL_JOYBUTTONUP) {
 					std::cout << "SDL_JOYBUTTONUP" << endl;
+					m_buttonStates[whichOne][event.jbutton.button] = false;
 				}
 
 				break;
