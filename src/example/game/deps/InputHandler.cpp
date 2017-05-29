@@ -3,7 +3,8 @@
 
 InputHandler* InputHandler::s_pInstance = 0;
 
-InputHandler::InputHandler() : 
+InputHandler::InputHandler() :
+	m_keystates(NULL),
 	m_bJoysticksInitialised(false),
 	m_mousePosition(new Vector2D(0, 0))
 {
@@ -101,22 +102,9 @@ void InputHandler::update()
 	SDL_Event event;
 
 	if(SDL_PollEvent(&event)) {
-
 		switch(event.type) {
 			case SDL_QUIT:
 				TheGame::Instance()->quit();
-				break;
-
-			case SDL_KEYDOWN:
-				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
-				onKeyDown();
-				__tmpQuitGame();
-				break;
-
-			case SDL_KEYUP:
-				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
-				onKeyUp();
-				__tmpQuitGame();
 				break;
 
 			case SDL_JOYAXISMOTION:
@@ -147,8 +135,19 @@ void InputHandler::update()
 			case SDL_MOUSEMOTION:
 				onMouseMove(event);
 				break;
-		}
 
+			case SDL_KEYDOWN:
+				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
+				onKeyDown();
+				__tmpQuitGame();
+				break;
+
+			case SDL_KEYUP:
+				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
+				onKeyUp();
+				__tmpQuitGame();
+				break;
+		}
 	}
 }
 
