@@ -3,8 +3,6 @@
 
 #include "deps/Game.h"
 #include <iostream>
-#include <stdint.h>
-#include <inttypes.h>
 
 using namespace std;
 
@@ -13,7 +11,7 @@ const int DELAY_TIME = 1000.0f / FPS;
 
 int main(int argc, char *argv[])
 {
-	uint32_t frameStart, frameTime;
+	Uint32 frameStart, frameTime;
 
     // SDL_WINDOW_FULLSCREEN
     // SDL_WINDOW_FULLSCREEN_DESKTOP

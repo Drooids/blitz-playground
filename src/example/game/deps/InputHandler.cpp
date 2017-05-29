@@ -109,12 +109,14 @@ void InputHandler::update()
 
 			case SDL_KEYDOWN:
 				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
-				m_activeKeys[event.key.keysym.scancode] = true;
+				onKeyDown();
+				__tmpQuitGame();
 				break;
 
 			case SDL_KEYUP:
 				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
-				m_activeKeys[event.key.keysym.scancode] = false;
+				onKeyUp();
+				__tmpQuitGame();
 				break;
 
 			case SDL_JOYAXISMOTION:
@@ -147,22 +149,32 @@ void InputHandler::update()
 				break;
 		}
 
-		if(m_activeKeys[SDL_SCANCODE_ESCAPE]) {
-			TheGame::Instance()->quit();
-			std::cout << "Key: ECS\n" << endl;
-			std::cout << "Quiting...\n" << endl;
-		}
 	}
 }
 
 void InputHandler::onKeyDown()
 {
-	// m_keystates = SDL_GetKeyboardState(0);
+	// Use this function to get a snapshot of the current state of the keyboard.
+	m_keystates = SDL_GetKeyboardState(NULL);
 }
 
 void InputHandler::onKeyUp()
 {
-	// m_keystates = SDL_GetKeyboardState(0);
+	m_keystates = SDL_GetKeyboardState(NULL);
+}
+
+bool InputHandler::onKeyDown(SDL_Scancode key)
+{
+	if (m_keystates != 0) {
+		if (m_keystates[key] == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	return false;
 }
 
 void InputHandler::onMouseMove(SDL_Event &event)
@@ -331,4 +343,11 @@ void InputHandler::clean()
 	}
 }
 
-
+void InputHandler::__tmpQuitGame() // Remove me
+{
+	if (onKeyDown(SDL_SCANCODE_ESCAPE)) {
+		TheGame::Instance()->quit();
+		std::cout << "Key: ECS\n" << endl;
+		std::cout << "Quiting...\n" << endl;
+	}
+}

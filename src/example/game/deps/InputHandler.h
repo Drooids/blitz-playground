@@ -1,6 +1,9 @@
 #ifndef INPUTHANDLER_H_DEFINED
 #define INPUTHANDLER_H_DEFINED
 
+#include <stdint.h>
+#include <inttypes.h>
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -43,8 +46,12 @@ public:
 	}
 
 	void update();
+
 	void onKeyDown();
 	void onKeyUp();
+
+	bool onKeyDown(SDL_Scancode key);
+
 	void onMouseMove(SDL_Event & event);
 	void onMouseButtonDown(SDL_Event & event);
 	void onMouseButtonUp(SDL_Event & event);
@@ -54,6 +61,8 @@ public:
 	void onJoystickButtonUp(SDL_Event & event);
 
 	void clean();
+
+	void __tmpQuitGame(); // Remove me
 
 	// Joystick
 
@@ -79,9 +88,6 @@ public:
 	bool getMouseButtonState(int buttonNumber);
 
 	Vector2D* getMousePosition();
-
-	// Keyboard
-	// ...
 
 private:
 	InputHandler();
@@ -124,9 +130,7 @@ private:
 	std::vector<std::vector<bool>> m_buttonStates;
 
 	// Keyboard
-
-	// Currently active keys
-	std::map<int, bool> m_activeKeys;
+	// ...
 
 	// Mouse
 
@@ -135,6 +139,10 @@ private:
 
 	// Motion
 	Vector2D* m_mousePosition;
+
+	// Keyboard
+
+	const Uint8* m_keystates;
 };
 
 typedef InputHandler TheInputHandler;
