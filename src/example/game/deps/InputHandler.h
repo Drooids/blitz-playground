@@ -43,6 +43,16 @@ public:
 	}
 
 	void update();
+	void onKeyDown();
+	void onKeyUp();
+	void onMouseMove(SDL_Event & event);
+	void onMouseButtonDown(SDL_Event & event);
+	void onMouseButtonUp(SDL_Event & event);
+
+	void onJoystickAxisMove(SDL_Event & event);
+	void onJoystickButtonDown(SDL_Event & event);
+	void onJoystickButtonUp(SDL_Event & event);
+
 	void clean();
 
 	// Joystick
@@ -54,13 +64,9 @@ public:
 	int xvalue(int joy, int stick);
 	int yvalue(int joy, int stick);
 
-	bool joysticksInitialised() {
-		return m_bJoysticksInitialised;
-	}
+	bool joysticksInitialised();
 
-	bool getButtonState(int joy, int buttonNumber) {
-		return m_buttonStates[joy][buttonNumber];
-	}
+	bool getButtonState(int joy, int buttonNumber);
 
 	// Mouse
 
@@ -70,9 +76,9 @@ public:
 		RIGHT = 2
 	};
 
-	bool getMouseButtonState(int buttonNumber) {
-		return m_mouseButtonStates[buttonNumber];
-	}
+	bool getMouseButtonState(int buttonNumber);
+
+	Vector2D* getMousePosition();
 
 	// Keyboard
 	// ...
@@ -124,8 +130,11 @@ private:
 
 	// Mouse
 
-	// Currently active buttons
+	// Buttons
 	std::vector<bool> m_mouseButtonStates;
+
+	// Motion
+	Vector2D* m_mousePosition;
 };
 
 typedef InputHandler TheInputHandler;

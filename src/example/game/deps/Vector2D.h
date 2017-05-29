@@ -1,99 +1,74 @@
-#pragma once
-
 #ifndef VECTOR2D_H_DEFINED
 #define VECTOR2D_H_DEFINED
 
-#include <stdio.h>
+#include <iostream>
+#include <math.h>
 
-class Vector2D
+class Vector2D 
 {
 public:
-	Vector2D(float x, float y): m_x(x), m_y(y) {}
+	Vector2D();
+	Vector2D(float x, float y);
 
-	float getX() { return m_x; }
-	float getY() { return m_y; }
+	virtual ~Vector2D();
 
-	void setX(float x) { m_x = x; }
-	void setY(float y) { m_y = y; }
+	virtual const float getX();
+	virtual const float getY();
 
-	float length();
+	virtual void setX(float x);
+	virtual void setY(float y);
 
-	Vector2D operator+(const Vector2D& v2) const
-	{
+	virtual int length();
+
+	Vector2D operator+(const Vector2D& v2) const {
 		return Vector2D(m_x + v2.m_x, m_y + v2.m_y);
 	}
 
-	friend Vector2D& operator+=(Vector2D& v1, Vector2D& v2)
-	{
-		v1.m_x = v2.m_x;
-		v1.m_y = v2.m_y;
+	friend Vector2D& operator+=(Vector2D& v1, const Vector2D& v2) {
+		v1.m_x += v2.m_x;
+		v1.m_y += v2.m_y;
 
 		return v1;
 	}
 
-	Vector2D operator*(float scalar)
-	{
-		return Vector2D(m_x * scalar, m_y * scalar);
-	}
-
-	Vector2D& operator*=(float scalar)
-	{
-		m_x *= scalar;
-		m_y *= scalar;
-
-		return *this;
-	}
-
-	Vector2D operator-(const Vector2D& v2) const
-	{
+	Vector2D operator-(const Vector2D& v2) const {
 		return Vector2D(m_x - v2.m_x, m_y - v2.m_y);
 	}
 
-	friend Vector2D& operator-=(Vector2D& v1, const Vector2D v2)
-	{
+	friend Vector2D& operator-=(Vector2D& v1, const Vector2D& v2) {
 		v1.m_x -= v2.m_x;
 		v1.m_y -= v2.m_y;
 
 		return v1;
 	}
 
-	Vector2D operator/(float scalar)
-	{
-		return Vector2D(m_x - scalar, m_y - scalar);
+	Vector2D operator*(float scalar) {
+		return Vector2D(m_x * scalar, m_y * scalar);
 	}
 
-	Vector2D& operator/=(float scalar)
-	{
+	Vector2D& operator*=(float scalar) {
+		m_x *= scalar;
+		m_y *= scalar;
+
+		return *this;
+	}
+
+	Vector2D operator/(float scalar) {
+		return Vector2D(m_x / scalar, m_y / scalar);
+	}
+
+	Vector2D& operator/=(float scalar) {
 		m_x /= scalar;
 		m_y /= scalar;
 
 		return *this;
 	}
 
-	void normalize()
-	{
-		float l = length();
-
-		if (l > 0)
-		{
-			(*this) *= 1;
-		}
-	}
-
-	void print()
-	{
-		printf("x: %f, y: %f\n", m_x, m_y);
-	}
-
-	// The global operator function is made friend of this class so
-	// that it can access private members
-	// friend Vector2D &operator+(Vector2D& v1, Vector2D& v2);
-
 private:
+	virtual void normalize();
 
 	float m_x;
 	float m_y;
-
 };
 
-#endif
+#endif /* defined(VECTOR2D_H_DEFINED) */
