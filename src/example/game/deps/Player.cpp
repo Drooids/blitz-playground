@@ -64,6 +64,7 @@ void Player::handleInput()
 		}
 
 		// Note: figure out which button it correspodents to
+		// Yellow or Y on an Xbox controller
 		if (TheInputHandler::Instance()->getButtonState(0, 3)) {
 			m_velocity.setX(1);
 		}

@@ -154,7 +154,7 @@ void InputHandler::update()
 				break;
 		}
 
-		if(m_activeKeys[SDLK_ESCAPE]) {
+		if(m_activeKeys[SDL_SCANCODE_ESCAPE]) {
 			TheGame::Instance()->quit();
 			std::cout << "Key: ECS\n" << endl;
 			std::cout << "Quiting...\n" << endl;

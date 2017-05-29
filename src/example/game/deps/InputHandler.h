@@ -71,7 +71,6 @@ private:
 
 	static InputHandler* s_pInstance;
 
-
 	// Joystick
 
 	std::vector<SDL_Joystick*> m_joysticks;
@@ -104,11 +103,16 @@ private:
 
 	std::vector<std::vector<bool>> m_buttonStates;
 
-
 	// Keyboard
 
 	// Currently active keys
 	std::map<int, bool> m_activeKeys;
+
+
+	// Mouse
+
+	// Currently active buttons
+	std::vector<bool> m_mouseButtonStates;
 
 	bool m_bJoysticksInitialised;
 };
