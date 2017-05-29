@@ -3,6 +3,13 @@
 
 InputHandler* InputHandler::s_pInstance = 0;
 
+InputHandler::InputHandler() 
+{
+	for (int i = 0; i < 3; i++) {
+		m_mouseButtonStates.push_back(false);
+	}
+}
+
 void InputHandler::initializeJoysticks()
 {
 	/*
@@ -38,12 +45,6 @@ void InputHandler::initializeJoysticks()
 					tempButton.push_back(false);
 				}
 				m_buttonStates.push_back(tempButton);
-
-				// Mouse
-
-				for(int i = 0; i < 3; i++) {
-					m_mouseButtonStates.push_back(false);
-				}
 
 			} else {
 				std::cout << SDL_GetError();
@@ -168,11 +169,10 @@ void InputHandler::update()
 
 				case SDL_MOUSEBUTTONDOWN:
 
-					std::cout << "SDL_MOUSEBUTTONDOWN: " << event.button.button
-						<< "Clicks: " << event.button.clicks
-						<< endl;
+					std::cout << "SDL_MOUSEBUTTONDOWN" << endl;
 
 					if(event.button.button == SDL_BUTTON_LEFT) {
+						std::cout << "SDL_BUTTON_LEFT" << endl;
 						m_mouseButtonStates[LEFT] = true;
 					}
 
@@ -188,20 +188,21 @@ void InputHandler::update()
 
 				case SDL_MOUSEBUTTONUP:
 
+					std::cout << "SDL_MOUSEBUTTONUP" << endl;
+
 					if(event.button.button == SDL_BUTTON_LEFT) {
-						m_mouseButtonStates[LEFT] = true;
+						m_mouseButtonStates[LEFT] = false;
 					}
 
 					if(event.button.button == SDL_BUTTON_MIDDLE) {
-						m_mouseButtonStates[MIDDLE] = true;
+						m_mouseButtonStates[MIDDLE] = false;
 					}
 
 					if(event.button.button == SDL_BUTTON_RIGHT) {
-						m_mouseButtonStates[RIGHT] = true;
+						m_mouseButtonStates[RIGHT] = false;
 					}
 
 					break;
-
 		}
 
 		if(m_activeKeys[SDL_SCANCODE_ESCAPE]) {

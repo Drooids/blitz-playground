@@ -78,7 +78,7 @@ public:
 	// ...
 
 private:
-	// InputHandler();
+	InputHandler();
 	~InputHandler();
 
 	static InputHandler* s_pInstance;

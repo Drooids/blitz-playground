@@ -68,13 +68,15 @@ void Player::handleInput()
 		if (TheInputHandler::Instance()->getButtonState(0, 3)) {
 			m_velocity.setX(1);
 		}
-
-		if (TheInputHandler::Instance()->getMouseButtonState(
-			TheInputHandler::Instance()->LEFT)) {
-			m_velocity.setX(0.2);
-		}
+		
 		// Controller 1, 2...
 		// ...
+	}
+
+	if (TheInputHandler::Instance()->getMouseButtonState(
+		TheInputHandler::Instance()->LEFT)) {
+		Vector2D acc(0.01, 0);
+		m_acceleration = m_acceleration + acc;
 	}
 }
 
