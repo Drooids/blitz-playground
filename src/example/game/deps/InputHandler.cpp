@@ -21,19 +21,30 @@ void InputHandler::initializeJoysticks()
 
 			if (SDL_JoystickGetAttached(joy) == SDL_TRUE) {
 
+				// Joysticks
+
 				m_joysticks.push_back(joy);
-				m_joystickValues.push_back(std::make_pair(new
-					Vector2D(0, 0), new Vector2D(0, 0))); // add our pair
+
+				// First and the second sticks
+				m_joystickValues.push_back(
+					std::make_pair(new Vector2D(0, 0), new Vector2D(0, 0))
+				);
 
 				// Note: Probably a map would be better
 				std::vector<bool> tempButton;
 
-				// Get the number of joysitck buttons
+				// Get the number of joystick buttons
 				for (int j = 0; j < SDL_JoystickNumButtons(joy); j++) {
 					tempButton.push_back(false);
 				}
-
 				m_buttonStates.push_back(tempButton);
+
+				// Mouse
+
+				for(int i = 0; i < 3; i++) {
+					m_mouseButtonStates.push_back(false);
+				}
+
 			} else {
 				std::cout << SDL_GetError();
 			}
@@ -75,11 +86,11 @@ void InputHandler::update()
 				SDL_JOYBUTTONDOWN ||
 				SDL_JOYBUTTONUP:
 
-					int whichOne = event.jaxis.which; // get which controller
-
-					std::cout << "SDL_JOYAXISMOTION || SDL_JOYBUTTONDOWN ..." << endl;
+				std::cout << "SDL_JOYAXISMOTION || SDL_JOYBUTTONDOWN ..." << endl;
 
 				if (SDL_JOYAXISMOTION) {
+
+					int whichOne = event.jaxis.which; // get which controller
 
 					// Left stick
 
@@ -142,16 +153,55 @@ void InputHandler::update()
 				}
 
 				if (SDL_JOYBUTTONDOWN) {
+					int whichOne = event.jaxis.which; // get which controller
 					std::cout << "SDL_JOYBUTTONDOWN" << endl;
 					m_buttonStates[whichOne][event.jbutton.button] = true;
 				}
 
 				if (SDL_JOYBUTTONUP) {
+					int whichOne = event.jaxis.which; // get which controller
 					std::cout << "SDL_JOYBUTTONUP" << endl;
 					m_buttonStates[whichOne][event.jbutton.button] = false;
 				}
 
 				break;
+
+				case SDL_MOUSEBUTTONDOWN:
+
+					std::cout << "SDL_MOUSEBUTTONDOWN: " << event.button.button
+						<< "Clicks: " << event.button.clicks
+						<< endl;
+
+					if(event.button.button == SDL_BUTTON_LEFT) {
+						m_mouseButtonStates[LEFT] = true;
+					}
+
+					if(event.button.button == SDL_BUTTON_MIDDLE) {
+						m_mouseButtonStates[MIDDLE] = true;
+					}
+
+					if(event.button.button == SDL_BUTTON_RIGHT) {
+						m_mouseButtonStates[RIGHT] = true;
+					}
+
+					break;
+
+				case SDL_MOUSEBUTTONUP:
+
+					if(event.button.button == SDL_BUTTON_LEFT) {
+						m_mouseButtonStates[LEFT] = true;
+					}
+
+					if(event.button.button == SDL_BUTTON_MIDDLE) {
+						m_mouseButtonStates[MIDDLE] = true;
+					}
+
+					if(event.button.button == SDL_BUTTON_RIGHT) {
+						m_mouseButtonStates[RIGHT] = true;
+					}
+
+					break;
+
 		}
 
 		if(m_activeKeys[SDL_SCANCODE_ESCAPE]) {

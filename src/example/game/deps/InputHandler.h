@@ -58,12 +58,24 @@ public:
 		return m_bJoysticksInitialised;
 	}
 
-	bool getButtonState(int joy, int buttonNumber)
-	{
+	bool getButtonState(int joy, int buttonNumber) {
 		return m_buttonStates[joy][buttonNumber];
 	}
 
+	// Mouse
+
+	enum mouse_buttons {
+		LEFT = 0,
+		MIDDLE = 1,
+		RIGHT = 2
+	};
+
+	bool getMouseButtonState(int buttonNumber) {
+		return m_mouseButtonStates[buttonNumber];
+	}
+
 	// Keyboard
+	// ...
 
 private:
 	// InputHandler();
@@ -72,6 +84,8 @@ private:
 	static InputHandler* s_pInstance;
 
 	// Joystick
+
+	bool m_bJoysticksInitialised;
 
 	std::vector<SDL_Joystick*> m_joysticks;
 
@@ -108,13 +122,10 @@ private:
 	// Currently active keys
 	std::map<int, bool> m_activeKeys;
 
-
 	// Mouse
 
 	// Currently active buttons
 	std::vector<bool> m_mouseButtonStates;
-
-	bool m_bJoysticksInitialised;
 };
 
 typedef InputHandler TheInputHandler;
