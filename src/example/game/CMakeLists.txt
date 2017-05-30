@@ -18,6 +18,13 @@ SET(DEPS
 	deps/Vector2D.h
 	deps/InputHandler.cpp
 	deps/InputHandler.h
+	deps/GameState.h
+	deps/GameStateMachine.cpp
+	deps/GameStateMachine.h
+	deps/MenuState.cpp
+	deps/MenuState.h
+	deps/PlayState.cpp
+	deps/PlayState.h
 )
 
 add_executable (main

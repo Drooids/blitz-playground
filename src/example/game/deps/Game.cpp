@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "TextureManager.h"
-#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -16,6 +14,9 @@ Game* Game::Instance() {
 bool Game::init(const char* title, int xpos, int ypos, int width,
 	int height, int flags)
 {
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(new MenuState());
+
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 
 		// Window
@@ -84,6 +85,10 @@ void Game::update()
 void Game::handleEvents()
 {
 	TheInputHandler::Instance()->update();
+
+	if (TheInputHandler::Instance()->onKeyDown(SDL_SCANCODE_RETURN)) {
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 }
 
 bool Game::running()

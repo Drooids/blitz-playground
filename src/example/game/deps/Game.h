@@ -2,6 +2,11 @@
 #define GAME_H_DEFINED
 
 #include "GameObject.h"
+#include "TextureManager.h"
+#include "InputHandler.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -76,6 +81,8 @@ private:
 
 	bool m_bRunning;
 	int m_currentFrame;
+
+	GameStateMachine* m_pGameStateMachine;
 };
 
 typedef Game TheGame;
