@@ -139,13 +139,16 @@ void InputHandler::update()
 			case SDL_KEYDOWN:
 				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
 				onKeyDown();
-				__tmpQuitGame();
+				if (onKeyDown(SDL_SCANCODE_ESCAPE)) {
+					TheGame::Instance()->quit();
+					std::cout << "Key: ECS\n" << endl;
+					std::cout << "Quiting...\n" << endl;
+				}
 				break;
 
 			case SDL_KEYUP:
 				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
 				onKeyUp();
-				__tmpQuitGame();
 				break;
 		}
 	}
@@ -339,14 +342,5 @@ void InputHandler::clean()
 		for (int i = 0; i < SDL_NumJoysticks(); i++) {
 			SDL_JoystickClose(m_joysticks[i]);
 		}
-	}
-}
-
-void InputHandler::__tmpQuitGame() // Remove me
-{
-	if (onKeyDown(SDL_SCANCODE_ESCAPE)) {
-		TheGame::Instance()->quit();
-		std::cout << "Key: ECS\n" << endl;
-		std::cout << "Quiting...\n" << endl;
 	}
 }

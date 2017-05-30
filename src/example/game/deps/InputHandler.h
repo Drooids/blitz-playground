@@ -62,8 +62,6 @@ public:
 
 	void clean();
 
-	void __tmpQuitGame(); // Remove me
-
 	// Joystick
 
 	void initializeJoysticks();
