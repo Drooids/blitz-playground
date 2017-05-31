@@ -14,8 +14,6 @@ Game* Game::Instance() {
 bool Game::init(const char* title, int xpos, int ypos, int width,
 	int height, int flags)
 {
-	m_pGameStateMachine = new GameStateMachine();
-	m_pGameStateMachine->changeState(new MenuState());
 
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 
@@ -34,6 +32,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 				std::cout << "Successful: Init\n";
 
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+
+				m_pGameStateMachine = new GameStateMachine();
+				m_pGameStateMachine->changeState(new MenuState());
 
 				TheTextureManager::Instance()->load(
 					"assets/sprites_002_magefalldown.png",
@@ -64,6 +65,8 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 
+	m_pGameStateMachine->render();
+
 	for (vector<GameObject*>::size_type i = 0;
 	i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
@@ -74,8 +77,9 @@ void Game::render()
 
 void Game::update()
 {
-	m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
+ 	m_pGameStateMachine->update();
 
+	m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
 	for (vector<GameObject*>::size_type i = 0;
 	i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();

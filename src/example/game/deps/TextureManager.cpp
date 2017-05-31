@@ -28,6 +28,7 @@ SDL_Renderer* pRenderer)
 	SDL_FreeSurface(pTempSurface);
 
 	if(pTexture != 0) {
+		std::cout << "pTexture: true";
 		m_textureMap[id] = pTexture;
 		return true;
 	}
@@ -70,4 +71,9 @@ SDL_RendererFlip flip)
 
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id],
 	&srcRect, &destRect, 0, 0, flip);
+}
+
+void TextureManager::clearFromTextureMap(std::string id)
+{
+	m_textureMap.erase(id);
 }

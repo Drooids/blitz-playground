@@ -32,12 +32,8 @@ void SDLGameObject::draw()
 
 void SDLGameObject::update()
 {
-	m_velocity = m_acceleration + m_velocity;
-	m_position = m_position + m_velocity;
-
-	// This doesn't get updated, why?
-	// m_position += m_velocity;
-	// m_position.print();
+	m_velocity += m_acceleration;
+	m_position += m_velocity;
 }
 
 void SDLGameObject::clean()

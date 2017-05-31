@@ -20,10 +20,10 @@ InputHandler::~InputHandler()
 
 	// clear our arrays
 	/*
-	m_joystickValues.clear();
-	m_joysticks.clear();
-	m_buttonStates.clear();
-	m_mouseButtonStates.clear();
+		m_joystickValues.clear();
+		m_joysticks.clear();
+		m_buttonStates.clear();
+		m_mouseButtonStates.clear();
 	*/
 }
 
@@ -108,27 +108,27 @@ void InputHandler::update()
 				break;
 
 			case SDL_JOYAXISMOTION:
-				std::cout << "SDL_JOYAXISMOTION" << endl;
+				// std::cout << "SDL_JOYAXISMOTION" << endl;
 				onJoystickAxisMove(event);
 				break;
 
 			case SDL_JOYBUTTONDOWN:
-				std::cout << "SDL_JOYBUTTONDOWN" << endl;
+				// std::cout << "SDL_JOYBUTTONDOWN" << endl;
 				onJoystickButtonDown(event);
 				break;
 
 			case SDL_JOYBUTTONUP:
-				std::cout << "SDL_JOYBUTTONUP" << endl;
+				// std::cout << "SDL_JOYBUTTONUP" << endl;
 				onJoystickButtonUp(event);
 				break;
 
 			case SDL_MOUSEBUTTONDOWN:
-				std::cout << "SDL_MOUSEBUTTONDOWN" << endl;
+				// std::cout << "SDL_MOUSEBUTTONDOWN" << endl;
 				onMouseButtonDown(event);
 				break;
 
 			case SDL_MOUSEBUTTONUP:
-				std::cout << "SDL_MOUSEBUTTONUP" << endl;
+				// std::cout << "SDL_MOUSEBUTTONUP" << endl;
 				onMouseButtonUp(event);
 				break;
 
@@ -137,7 +137,7 @@ void InputHandler::update()
 				break;
 
 			case SDL_KEYDOWN:
-				std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
+				// std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
 				onKeyDown();
 				if (onKeyDown(SDL_SCANCODE_ESCAPE)) {
 					TheGame::Instance()->quit();
@@ -147,7 +147,7 @@ void InputHandler::update()
 				break;
 
 			case SDL_KEYUP:
-				std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
+				// std::cout << "SDL_KEYUP: " << event.key.keysym.scancode << endl;
 				onKeyUp();
 				break;
 		}

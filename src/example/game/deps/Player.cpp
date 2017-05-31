@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "SDL.h"
+#include <iostream>
 
 Player::Player(const LoaderParams* pParams) :
 SDLGameObject(pParams)
@@ -10,7 +11,6 @@ SDLGameObject(pParams)
 void Player::draw()
 {
 	SDLGameObject::draw();
-	// GameObject::draw(pRenderer);
 }
 
 void Player::update()
@@ -22,11 +22,7 @@ void Player::update()
 
 	handleInput();
 
-	// m_acceleration.setX(0.01);
-
 	SDLGameObject::update();
-
-	// m_position.setX(m_position.getX() + 1);
 }
 
 void Player::handleInput()
@@ -68,7 +64,7 @@ void Player::handleInput()
 		if (TheInputHandler::Instance()->getButtonState(0, 3)) {
 			m_velocity.setX(1);
 		}
-		
+
 		// Controller 1, 2...
 		// ...
 	}

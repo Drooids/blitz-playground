@@ -1,0 +1,4 @@
+1.
+libpng warning: iCCP: known incorrect sRGB profile
+https://stackoverflow.com/a/29337595/1763641
+
