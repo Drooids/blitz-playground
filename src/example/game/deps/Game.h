@@ -7,6 +7,7 @@
 #include "GameStateMachine.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include "PauseState.h"
 #include "Player.h"
 #include "Enemy.h"
 

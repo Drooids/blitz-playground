@@ -27,7 +27,6 @@ InputHandler::~InputHandler()
 	*/
 }
 
-
 void InputHandler::initializeJoysticks()
 {
 	/*
@@ -139,11 +138,6 @@ void InputHandler::update()
 			case SDL_KEYDOWN:
 				// std::cout << "SDL_KEYDOWN: " << event.key.keysym.scancode << endl;
 				onKeyDown();
-				if (onKeyDown(SDL_SCANCODE_ESCAPE)) {
-					TheGame::Instance()->quit();
-					std::cout << "Key: ECS\n" << endl;
-					std::cout << "Quiting...\n" << endl;
-				}
 				break;
 
 			case SDL_KEYUP:
@@ -219,6 +213,13 @@ void InputHandler::onMouseButtonUp(SDL_Event &event)
 	{
 		m_mouseButtonStates[RIGHT] = false;
 	}
+}
+
+void InputHandler::reset()
+{
+    m_mouseButtonStates[LEFT] = false;
+    m_mouseButtonStates[RIGHT] = false;
+    m_mouseButtonStates[MIDDLE] = false;
 }
 
 void InputHandler::onJoystickAxisMove(SDL_Event &event)

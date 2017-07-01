@@ -55,6 +55,7 @@ public:
 	void onMouseMove(SDL_Event & event);
 	void onMouseButtonDown(SDL_Event & event);
 	void onMouseButtonUp(SDL_Event & event);
+	void reset();
 
 	void onJoystickAxisMove(SDL_Event & event);
 	void onJoystickButtonDown(SDL_Event & event);

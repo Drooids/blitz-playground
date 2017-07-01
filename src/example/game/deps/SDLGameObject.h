@@ -7,8 +7,6 @@
 
 #include <string>
 
-using namespace std;
-
 class SDLGameObject : public GameObject
 {
 public:

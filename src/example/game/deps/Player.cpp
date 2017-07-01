@@ -15,7 +15,7 @@ void Player::draw()
 
 void Player::update()
 {
-	m_currentFrame = int(((SDL_GetTicks() / 200) % 6));
+	m_currentFrame = int(((SDL_GetTicks() / 200) % 5));
 
 	m_velocity.setX(0);
 	m_velocity.setY(0);

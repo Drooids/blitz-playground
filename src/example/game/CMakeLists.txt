@@ -25,6 +25,8 @@ SET(DEPS
 	deps/MenuState.h
 	deps/PlayState.cpp
 	deps/PlayState.h
+	deps/PauseState.h
+	deps/PauseState.cpp
 	deps/MenuButton.cpp
 	deps/MenuButton.h
 )
