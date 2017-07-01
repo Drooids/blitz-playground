@@ -41,3 +41,5 @@ if "%1"=="-m" (
 	echo "%cd%\bin\Debug"
 	echo.
 )
+
+cd ..

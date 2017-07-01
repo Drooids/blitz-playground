@@ -1,3 +1,6 @@
+#ifndef GAMEMENUSTATE_H_DEFINED
+#define GAMEMENUSTATE_H_DEFINED
+
 #include "GameState.h"
 #include <vector>
 #include <iostream>
@@ -15,3 +18,5 @@ public:
 private:
 	std::vector<GameState* > m_gameStates;
 };
+
+#endif

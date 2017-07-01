@@ -1,7 +1,7 @@
 #include "MenuButton.h"
 
-MenuButton::MenuButton(const LoaderParams* pParams):
-SDLGameObject(pParams)
+MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()):
+SDLGameObject(pParams), m_callback(callback)
 {
 	m_currentFrame = MOUSE_OUT;
 }
@@ -22,6 +22,9 @@ void MenuButton::update()
 	// m_position.getX() -> +--------------------+ <- (m_position.getX() + m_width)
 	//						+		 button		 +
 	//						+--------------------+
+	//						^
+	//						|
+	//			m_position.getY() + m_height
 	//
 	if (pMousePos->getX() < (m_position.getX() + m_width)
 		&& pMousePos->getX() > m_position.getX()
@@ -29,11 +32,16 @@ void MenuButton::update()
 		&& pMousePos->getY() > m_position.getY())
 	{
 		m_currentFrame = MOUSE_OVER;
+		m_bReleased = true;
 
-		
 		if (TheInputHandler::Instance()->getMouseButtonState(
 			TheInputHandler::Instance()->LEFT)) {
+
 			m_currentFrame = CLICKED;
+
+			m_callback();
+
+			m_bReleased = false;
 		}
 	}
 	else {
