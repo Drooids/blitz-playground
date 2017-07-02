@@ -5,8 +5,6 @@
 #include "SDLGameObject.h"
 #include "InputHandler.h"
 
-using namespace std;
-
 class Player : public SDLGameObject
 {
 public:

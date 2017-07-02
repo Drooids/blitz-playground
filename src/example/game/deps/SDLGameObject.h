@@ -11,7 +11,8 @@ class SDLGameObject : public GameObject
 {
 public:
 
-	SDLGameObject(const LoaderParams* pParams);
+	SDLGameObject(const LoaderParams* pParams, int numFrames = 1,
+		int frameChangeSpeed = 0);
 
 	virtual void draw();
 	virtual void update();
@@ -28,6 +29,8 @@ protected:
 
 	int m_currentRow;
 	int m_currentFrame;
+	int m_numFrames;
+	int m_frameChangeSpeed;
 
 	string m_textureID;
 };

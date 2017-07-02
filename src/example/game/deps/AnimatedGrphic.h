@@ -1,15 +1,15 @@
-#ifndef ENEMY_H_DEFINED
-#define ENEMY_H_DEFINED
+#ifndef ANIMATEDGRPHIC_H_DEFINED
+#define ANIMATEDGRPHIC_H_DEFINED
 
 #include "LoaderParams.h"
 #include "SDLGameObject.h"
 #include "InputHandler.h"
 
-class Enemy : public SDLGameObject
+class AnimatedGrphic : public SDLGameObject
 {
 public:
 
-	Enemy(const LoaderParams* pParams);
+	AnimatedGrphic(const LoaderParams* pParams);
 
 	virtual void draw();
 	virtual void update();
@@ -17,7 +17,6 @@ public:
 	virtual void handleInput();
 
 	virtual void clean();
-
 };
 
 #endif

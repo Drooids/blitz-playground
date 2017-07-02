@@ -3,9 +3,10 @@
 #include "GameObject.h"
 #include "SDLGameObject.h"
 
-SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
+SDLGameObject::SDLGameObject(const LoaderParams* pParams, int numFrames, int frameChangeSpeed) :
 GameObject(pParams), m_position(pParams->getX(), pParams->getY()),
-m_acceleration(0, 0), m_velocity(0, 0)
+m_acceleration(0, 0), m_velocity(0, 0),
+m_numFrames(numFrames), m_frameChangeSpeed(frameChangeSpeed)
 {
 	m_width = pParams->getWidth();
 	m_height = pParams->getHeight();

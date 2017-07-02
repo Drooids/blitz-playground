@@ -29,6 +29,8 @@ SET(DEPS
 	deps/PauseState.cpp
 	deps/MenuButton.cpp
 	deps/MenuButton.h
+	deps/AnimatedGrphic.cpp
+	deps/AnimatedGrphic.h
 )
 
 add_executable (main

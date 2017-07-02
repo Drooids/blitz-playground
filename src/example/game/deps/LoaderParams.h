@@ -9,7 +9,7 @@ class LoaderParams
 {
 public:
 
-	LoaderParams(int x, int y, int width, int height, string textureID) :
+	LoaderParams(int x, int y, int width, int height, string textureID, int numFrames = 1) :
 	m_x(x),
 	m_y(y),
 	m_width(width),
