@@ -2,12 +2,12 @@
 
 const std::string GameOverState::s_gameOverID = "GAMEOVER";
 
-GameOverState::s_gameOverToMain()
+void GameOverState::s_gameOverToMain()
 {
 	TheGame::Instance()->getStateMachine()->changeState(new MenuState());
 }
 
-GameOverState::s_restartPlay()
+void GameOverState::s_restartPlay()
 {
 	TheGame::Instance()->getStateMachine()->changeState(new PlayState());
 }
@@ -52,13 +52,13 @@ bool GameOverState::onEnter()
 	}
 
 	GameObject* ot = new AnimatedGraphic(
-		new LoaderParams(200, 100, 190, 30 "gameovertext"), 2, 2);
+ 		new LoaderParams(200, 100, 190, 30, "gameovertext"), 2, 2);
 
 	GameObject* mb = new MenuButton(
-		new LoaderParams(200, 200, 200, 80 "mainbutton"), );
+		new LoaderParams(200, 200, 200, 80, "mainbutton"), s_gameOverToMain);
 
 	GameObject* rb = new MenuButton(
-		new LoaderParams(200, 300, 200, 80 "restartbutton"), );
+		new LoaderParams(200, 300, 200, 80, "restartbutton"), s_restartPlay);
 
 	m_gameObjects.push_back(ot);
 	m_gameObjects.push_back(mb);

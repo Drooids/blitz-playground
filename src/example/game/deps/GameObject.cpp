@@ -1,7 +1,5 @@
 #include "GameObject.h"
 
-using namespace std;
-
 void GameObject::draw()
 {
 }

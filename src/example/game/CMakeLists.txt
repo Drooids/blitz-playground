@@ -6,18 +6,22 @@ SET(DEPS
 	deps/LoaderParams.h
 	deps/TextureManager.cpp
 	deps/TextureManager.h
-	deps/GameObject.cpp
-	deps/GameObject.h
-	deps/SDLGameObject.cpp
-	deps/SDLGameObject.h
-	deps/Player.cpp
-	deps/Player.h
-	deps/Enemy.cpp
-	deps/Enemy.h
 	deps/Vector2D.cpp
 	deps/Vector2D.h
 	deps/InputHandler.cpp
 	deps/InputHandler.h
+	deps/GameObject.cpp
+	deps/GameObject.h
+	deps/SDLGameObject.cpp
+	deps/SDLGameObject.h
+	deps/AnimatedGraphic.cpp
+	deps/AnimatedGraphic.h
+	deps/Player.cpp
+	deps/Player.h
+	deps/Enemy.cpp
+	deps/Enemy.h
+	deps/MenuButton.cpp
+	deps/MenuButton.h
 	deps/GameState.h
 	deps/GameStateMachine.cpp
 	deps/GameStateMachine.h
@@ -27,10 +31,8 @@ SET(DEPS
 	deps/PlayState.h
 	deps/PauseState.h
 	deps/PauseState.cpp
-	deps/MenuButton.cpp
-	deps/MenuButton.h
-	deps/AnimatedGrphic.cpp
-	deps/AnimatedGrphic.h
+	deps/GameOverState.h
+	deps/GameOverState.cpp
 )
 
 add_executable (main

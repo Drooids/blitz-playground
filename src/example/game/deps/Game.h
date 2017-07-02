@@ -8,8 +8,10 @@
 #include "MenuState.h"
 #include "PlayState.h"
 #include "PauseState.h"
+#include "GameOverState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "AnimatedGraphic.h"
 
 #include <stdio.h>
 #include <iostream>

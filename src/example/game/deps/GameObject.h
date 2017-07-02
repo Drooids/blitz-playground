@@ -3,8 +3,6 @@
 
 #include "LoaderParams.h"
 
-using namespace std;
-
 class GameObject
 {
 public:
