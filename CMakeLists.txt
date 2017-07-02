@@ -79,6 +79,9 @@ IF(NOT WIN32)
         # SDL_image
         set(SDL2_IMAGE_INCLUDE_DIR "${DEPENDENCIES}/include/SDL_image")
         set(SDL2_IMAGE_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL_image/lib/${DEBUG_MODE}/libSDL2_image.so")
+
+        # tinyxml2
+        set(TINYXML2_INCLUDE_DIR "${DEPENDENCIES}/include/tinyxml2")
     ENDIF()
 ENDIF()
 
@@ -95,10 +98,13 @@ IF(WIN32)
     set(SDL2_IMAGE_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL_image/lib/${DEBUG_MODE}/SDL2_image.lib")
     set(SDL2_IMAGE_DLLS "${DEPENDENCIES}/${BIT_MODE}/${OS}/SDL_image/dll/${DEBUG_MODE}")
 
+    # tinyxml2
+    set(TINYXML2_INCLUDE_DIR "${DEPENDENCIES}/include/tinyxml2")
+
     # Copy .dll files
     # ${CMAKE_BINARY_DIR}/bin
 
-    # SDL
+    # SDL
     #add_custom_command(TARGET main PRE_BUILD
     #    COMMAND ${CMAKE_COMMAND} -E copy_directory
     #    ${SDL2_DLLS}
@@ -164,6 +170,7 @@ set(BLITZ_LIBS
 set(BLITZ_INCLUDES
     ${SDL2_INCLUDE_DIR}
     ${SDL2_IMAGE_INCLUDE_DIR}
+    ${TINYXML2_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/
 )
 
