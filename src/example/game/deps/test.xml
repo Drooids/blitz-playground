@@ -16,8 +16,8 @@ callbackID="2"/>
 </MENU>
 <PLAY>
 <TEXTURES>
-<texture filename="assets/helicopter.png" ID="helicopter"/>
-<texture filename="assets/helicopter2.png" ID="helicopter2"/>
+<texture filename="helicopter.png" ID="helicopter"/>
+<texture filename="helicopter2.png" ID="helicopter2"/>
 </TEXTURES>
 <OBJECTS>
 <object type="Player" x="500" y="100" width="128" height="55"

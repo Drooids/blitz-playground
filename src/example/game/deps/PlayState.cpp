@@ -51,7 +51,9 @@ bool PlayState::onExit()
 
 	m_gameObjects.clear();
 
-	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
+	for (int i = 0; i < m_textureIDList.size(); i++) {
+		TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);
+	}
 
 	printf("Exit PlayState\n");
 	return false;

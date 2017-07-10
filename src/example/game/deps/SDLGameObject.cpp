@@ -20,7 +20,7 @@ void SDLGameObject::load(const LoaderParams* pParams)
 	// TODO: Replace them with getters
 	m_currentRow = 1;
   	m_currentFrame = 1;
-	m_numFrames = 1;
+	m_numFrames = pParams->getNumFrames();
 }
 
 void SDLGameObject::draw()
