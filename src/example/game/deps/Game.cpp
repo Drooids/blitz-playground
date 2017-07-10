@@ -33,11 +33,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
-				m_pGameStateMachine = new GameStateMachine();
-				m_pGameStateMachine->changeState(new MainMenuState());
-
 				TheGameObjectFactory::Instance()->registerType("MenuButton",
 					new MenuButtonCreator());
+
+				m_pGameStateMachine = new GameStateMachine();
+				m_pGameStateMachine->changeState(new MainMenuState());
 
 			} else
 				return false;

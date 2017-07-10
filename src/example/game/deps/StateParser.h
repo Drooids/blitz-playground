@@ -19,6 +19,8 @@ private:
 	void parseObjects(tinyxml2::XMLElement* pStateRoot,
 		std::vector<GameObject*> *pGameObject);
 
+	void debugXML(std::string s, tinyxml2::XMLElement * e);
+
 	void parseTextures(tinyxml2::XMLElement* pStateRoot,
 		std::vector<std::string> *pTextureIDs);
 };

@@ -29,16 +29,16 @@
 bool StateParser::parseState(const char *stateFile, std::string stateID,
 	std::vector<GameObject *> *pObjects, std::vector<std::string> *pTextureIDs)
 {
- 	// create the XML document
+	// create the XML document
 	tinyxml2::XMLDocument xmlDoc;
 
-	if(!xmlDoc.LoadFile(stateFile)) {
-		printf("%s", xmlDoc.ErrorID());
+	if(xmlDoc.LoadFile(stateFile) != 0) {
+		std::cout << xmlDoc.ErrorName() << "\n";
+		xmlDoc.PrintError();
 		return false;
 	}
 
 	tinyxml2::XMLElement* pRoot = xmlDoc.RootElement(); // E.x: <STATES>
-
 	tinyxml2::XMLElement* pStateRoot = 0;
 
 	// get this states root node and assign it to pStateRoot
@@ -50,11 +50,13 @@ bool StateParser::parseState(const char *stateFile, std::string stateID,
 		}
 	}
 
+	debugXML("pStateRoot:", pStateRoot);
+
 	// Textures
 
 	tinyxml2::XMLElement* pTextureRoot = 0;
 
- 	// get the root of the texture elements
+	// get the root of the texture elements
 	for(tinyxml2::XMLElement* e = pStateRoot->FirstChildElement(); e != NULL;
 		e = e->NextSiblingElement()) {
 
@@ -64,15 +66,17 @@ bool StateParser::parseState(const char *stateFile, std::string stateID,
 		}
 	}
 
+	debugXML("pTextureRoot: ", pTextureRoot);
+
 	// now parse the textures
-  	parseTextures(pTextureRoot, pTextureIDs);
+	parseTextures(pTextureRoot, pTextureIDs);
 
-  	// Objects
+	// Objects
 
-  	// pre declare the object root node
+	// pre declare the object root node
 	tinyxml2::XMLElement* pObjectRoot = 0;
 
-  	// get the root node and assign it to pObjectRoot
+	// get the root node and assign it to pObjectRoot
 	for(tinyxml2::XMLElement* e = pStateRoot->FirstChildElement(); e != NULL;
 		e = e->NextSiblingElement()) {
 
@@ -80,6 +84,8 @@ bool StateParser::parseState(const char *stateFile, std::string stateID,
 			pObjectRoot = e;
 		}
 	}
+
+	debugXML("pObjectRoot: ", pObjectRoot);
 
 	// now parse the objects
 	parseObjects(pObjectRoot, pObjects);
@@ -91,10 +97,12 @@ void StateParser::parseTextures(tinyxml2::XMLElement* pStateRoot,
 	std::vector<std::string> *pTextureIDs)
 {
 	for(tinyxml2::XMLElement* e = pStateRoot->FirstChildElement(); e != NULL;
-		e->NextSiblingElement()) {
+		e = e->NextSiblingElement()) {
 
 		std::string filenameAttr = e->Attribute("filename");
 		std::string idAttr = e->Attribute("ID");
+
+		debugXML("parseTextures e: ", e);
 
 		pTextureIDs->push_back(idAttr);
 
@@ -128,7 +136,15 @@ void StateParser::parseObjects(tinyxml2::XMLElement* pStateRoot,
 		pGameObject->load(new LoaderParams(x,y,width,height,textureID,numFrames,
 			callbackID, animSpeed));
 
-	    pObjects->push_back(pGameObject);
+		pObjects->push_back(pGameObject);
 	}
 }
 
+void StateParser::debugXML(std::string s, tinyxml2::XMLElement* e)
+{
+	std::cout << s << endl;
+	tinyxml2::XMLPrinter printer;
+	e->Accept(&printer);
+	std::string stringBuffer = printer.CStr();
+	std::cout << stringBuffer.c_str() << endl;
+}
