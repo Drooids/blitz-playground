@@ -17,6 +17,7 @@ void GameStateMachine::pushState(GameState* pState)
 void GameStateMachine::changeState(GameState* pState)
 {
 	if(!m_gameStates.empty()) {
+		// If trying to change to the current state
 		if(m_gameStates.back()->getStateID() == pState->getStateID()) {
 			return;
 		}

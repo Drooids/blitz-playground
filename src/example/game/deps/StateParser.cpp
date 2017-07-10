@@ -130,6 +130,8 @@ void StateParser::parseObjects(tinyxml2::XMLElement* pStateRoot,
 
 		textureID = e->Attribute("textureID");
 
+		std::cout << e->Attribute("type") << endl;
+
 		GameObject* pGameObject = TheGameObjectFactory::Instance()
 			->create(e->Attribute("type"));
 
