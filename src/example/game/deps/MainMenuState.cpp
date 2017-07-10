@@ -40,23 +40,6 @@ bool MainMenuState::onEnter()
 	return true;
 }
 
-void MainMenuState::setCallbacks(const std::vector<Callback>& callbacks)
-{
-	for(int i = 0; i < m_gameObjects.size(); i++) {
-
-		// We use dynamic_cast to check whether the object is a MenuButton type;
-		// if it is then we do the actual cast and then use the objects
-		// callbackID as the index
-		// into the callbacks vector and assign the correct function
-		if(dynamic_cast<MenuButton*>(m_gameObjects[i])) {
-			MenuButton* pButton =
-				dynamic_cast<MenuButton*>(m_gameObjects[i]);
-
-				pButton->setCallback(callbacks[pButton->getCallbackID()]);
-		}
-	}
-}
-
 bool MainMenuState::onExit()
 {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
@@ -84,4 +67,21 @@ void MainMenuState::s_menuToPlay()
 void MainMenuState::s_exitFromMenu()
 {
 	TheGame::Instance()->quit();
+}
+
+void MainMenuState::setCallbacks(const std::vector<Callback>& callbacks)
+{
+	for(int i = 0; i < m_gameObjects.size(); i++) {
+
+		// We use dynamic_cast to check whether the object is a MenuButton type;
+		// if it is then we do the actual cast and then use the objects
+		// callbackID as the index
+		// into the callbacks vector and assign the correct function
+		if(dynamic_cast<MenuButton*>(m_gameObjects[i])) {
+			MenuButton* pButton =
+				dynamic_cast<MenuButton*>(m_gameObjects[i]);
+
+				pButton->setCallback(callbacks[pButton->getCallbackID()]);
+		}
+	}
 }

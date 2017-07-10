@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Game.h"
+#include "GameState.h"
 #include "GameObject.h"
 #include "MenuButton.h"
 #include "TextureManager.h"

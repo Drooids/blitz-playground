@@ -24,7 +24,7 @@ public:
 	int getHeight() { return m_height; }
 
 	int getNumFrames() { return m_numFrames; }
-	int getFrameChangeSpeed() { return m_frameChangeSpeed; }
+	int getFrameChangeSpeed() { return m_animSpeed; }
 
 protected:
 
@@ -38,7 +38,7 @@ protected:
 	int m_currentRow;
 	int m_currentFrame;
 	int m_numFrames;
-	int m_frameChangeSpeed;
+	int m_animSpeed;
 
 	string m_textureID;
 };

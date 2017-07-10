@@ -4,14 +4,14 @@
 #include <vector>
 
 #include "Game.h"
-#include "GameState.h"
 #include "GameObject.h"
 #include "MenuButton.h"
 #include "TextureManager.h"
 
-class GameObject;
+#include "StateParser.h"
+#include "MenuState.h"
 
-class GameOverState : public GameState
+class GameOverState : public MenuState
 {
 public:
 	virtual void update();
@@ -20,15 +20,17 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	virtual std::string getStateID() const {return s_gameOverID;}
+	virtual std::string getStateID() const { return s_gameOverID; }
 
-	private:
+private:
 	static void s_gameOverToMain();
 	static void s_restartPlay();
 
 	static const std::string s_gameOverID;
 
 	std::vector<GameObject*> m_gameObjects;
+
+	virtual void setCallbacks(const std::vector<Callback>& callbacks);
 };
 
 #endif

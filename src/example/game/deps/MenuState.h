@@ -1,3 +1,6 @@
+#ifndef MENUSTATE_H_DEFINED
+#define MENUSTATE_H_DEFINED
+
 #include "GameState.h"
 
 class MenuState : public GameState
@@ -9,3 +12,5 @@ protected:
 
 	std::vector<Callback> m_callbacks;
 };
+
+#endif
