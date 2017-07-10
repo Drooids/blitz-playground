@@ -5,7 +5,7 @@ const std::string PauseState::s_pauseID = "PAUSE";
 void PauseState::s_pauseToMain()
 {
 	TheGame::Instance()->getStateMachine()->changeState(
-		new MenuState());
+		new MainMenuState());
 }
 
 void PauseState::s_resumePlay()
@@ -46,6 +46,7 @@ bool PauseState::onEnter()
 		return false;
 	}
 
+	/*
 	GameObject* button1 = new MenuButton(new LoaderParams(200, 100,
 		200, 80, "mainbutton"), s_pauseToMain);
 		GameObject* button2 = new MenuButton(new LoaderParams(200, 300,
@@ -53,6 +54,7 @@ bool PauseState::onEnter()
 
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
+	*/
 
 	printf("entering PauseState\n");
 	return true;

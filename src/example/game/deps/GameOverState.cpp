@@ -4,7 +4,7 @@ const std::string GameOverState::s_gameOverID = "GAMEOVER";
 
 void GameOverState::s_gameOverToMain()
 {
-	TheGame::Instance()->getStateMachine()->changeState(new MenuState());
+	TheGame::Instance()->getStateMachine()->changeState(new MainMenuState());
 }
 
 void GameOverState::s_restartPlay()
@@ -51,8 +51,9 @@ bool GameOverState::onEnter()
 		return false;
 	}
 
+	/*
 	GameObject* ot = new AnimatedGraphic(
- 		new LoaderParams(200, 100, 190, 30, "gameovertext"), 2, 2);
+ 		new LoaderParams(200, 100, 190, 30, "gameovertext"));
 
 	GameObject* mb = new MenuButton(
 		new LoaderParams(200, 200, 200, 80, "mainbutton"), s_gameOverToMain);
@@ -63,6 +64,7 @@ bool GameOverState::onEnter()
 	m_gameObjects.push_back(ot);
 	m_gameObjects.push_back(mb);
 	m_gameObjects.push_back(rb);
+	*/
 
 	printf("Entering GameOverState\n");
 	return true;

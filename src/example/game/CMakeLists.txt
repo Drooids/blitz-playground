@@ -25,7 +25,13 @@ SET(DEPS
 	deps/GameState.h
 	deps/GameStateMachine.cpp
 	deps/GameStateMachine.h
-	deps/MenuState.cpp
+	deps/BaseCreator.h
+	deps/GameObjectFactory.cpp
+	deps/GameObjectFactory.h
+	deps/MainMenuState.cpp
+	deps/MainMenuState.h
+	deps/StateParser.cpp
+	deps/StateParser.h
 	deps/MenuState.h
 	deps/PlayState.cpp
 	deps/PlayState.h
@@ -40,17 +46,20 @@ add_executable (main
 	${DEPS}
 	${SDL2_INCLUDE_DIR}
 	${SDL2_IMAGE_INCLUDE_DIR}
+	${TINYXML2_INCLUDE_DIR}
 )
 
 include_directories(
 	${SDL2_INCLUDE_DIR}
 	${SDL2_IMAGE_INCLUDE_DIR}
+	${TINYXML2_INCLUDE_DIR}
 	"deps"
 )
 
 target_link_libraries(main
 	${SDL2_LIBRARY}
 	${SDL2_IMAGE_LIBRARY}
+	${TINYXML2_LIBRARY}
 )
 
 IF(WIN32)
@@ -74,5 +83,11 @@ IF(WIN32)
 	add_custom_command(TARGET main PRE_BUILD
 		COMMAND ${CMAKE_COMMAND} -E copy_directory
 		${SDL2_IMAGE_DLLS}
+		$<TARGET_FILE_DIR:main>)
+
+	# tinyxml2
+	add_custom_command(TARGET main PRE_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_directory
+		${TINYXML2_DLLS}
 		$<TARGET_FILE_DIR:main>)
 ENDIF()

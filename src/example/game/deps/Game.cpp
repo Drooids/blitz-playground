@@ -34,12 +34,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
 				m_pGameStateMachine = new GameStateMachine();
-				m_pGameStateMachine->changeState(new MenuState());
+				m_pGameStateMachine->changeState(new MainMenuState());
 
-				TheTextureManager::Instance()->load(
-					"assets/sprites_002_magefalldown.png",
-					"animate", m_pRenderer
-				);
+				TheGameObjectFactory::Instance()->registerType("MenuButton",
+					new MenuButtonCreator());
 
 			} else
 				return false;

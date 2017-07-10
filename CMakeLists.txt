@@ -82,6 +82,7 @@ IF(NOT WIN32)
 
         # tinyxml2
         set(TINYXML2_INCLUDE_DIR "${DEPENDENCIES}/include/tinyxml2")
+        set(TINYXML2_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/tinyxml2/lib/${DEBUG_MODE}/libtinyxml2.so")
     ENDIF()
 ENDIF()
 
@@ -100,11 +101,13 @@ IF(WIN32)
 
     # tinyxml2
     set(TINYXML2_INCLUDE_DIR "${DEPENDENCIES}/include/tinyxml2")
+    set(TINYXML2_LIBRARY "${DEPENDENCIES}/${BIT_MODE}/${OS}/tinyxml2/lib/${DEBUG_MODE}/tinyxml2d.lib")
+    set(TINYXML2_DLLS "${DEPENDENCIES}/${BIT_MODE}/${OS}/tinyxml2/dll/${DEBUG_MODE}")
 
     # Copy .dll files
     # ${CMAKE_BINARY_DIR}/bin
 
-    # SDL
+    # SDL
     #add_custom_command(TARGET main PRE_BUILD
     #    COMMAND ${CMAKE_COMMAND} -E copy_directory
     #    ${SDL2_DLLS}
@@ -124,12 +127,19 @@ message("-- SDL2_LIBRARY: ${SDL2_LIBRARY}")
 IF(WIN32)
     message("-- SDL2_MAIN_LIBRARY: ${SDL2_MAIN_LIBRARY}")
     message("-- SDL2_TEST_LIBRARY: ${SDL2_TEST_LIBRARY}")
-    message("-- SDL2_IMAGE_DLLS: ${SDL2_DLLS}")
+    message("-- SDL2_DLLS: ${SDL2_DLLS}")
     message("-- SDL2_IMAGE_DLLS: ${SDL2_IMAGE_DLLS}")
+    message("-- TINYXML2_DLLS: ${TINYXML2_DLLS}")
 ENDIF()
 
 message("-- SDL2_IMAGE_INCLUDE_DIR: ${SDL2_IMAGE_INCLUDE_DIR}")
 message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
+
+message("-- SDL2_IMAGE_INCLUDE_DIR: ${SDL2_IMAGE_INCLUDE_DIR}")
+message("-- SDL2_IMAGE_LIBRARY: ${SDL2_IMAGE_LIBRARY}")
+
+message("-- TINYXML2_INCLUDE_DIR: ${TINYXML2_INCLUDE_DIR}")
+message("-- TINYXML2_LIBRARY: ${TINYXML2_LIBRARY}")
 message("--")
 
 IF(NOT WIN32)
@@ -165,6 +175,7 @@ set(BLITZ_LIBS
     ${OPENGL_LIBRARY}
     ${SDL2_LIBRARY}
     ${SDL2_IMAGE_LIBRARY}
+    ${TINYXML2_LIBRARY}
 )
 
 set(BLITZ_INCLUDES

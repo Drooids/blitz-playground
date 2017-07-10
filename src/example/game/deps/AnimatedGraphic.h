@@ -9,8 +9,7 @@ class AnimatedGraphic : public SDLGameObject
 {
 public:
 
-	AnimatedGraphic(const LoaderParams* pParams, int numFrames = 1,
-		int frameChangeSpeed = 0);
+	AnimatedGraphic(const LoaderParams* pParams);
 
 	virtual void draw();
 	virtual void update();

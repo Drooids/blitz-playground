@@ -5,10 +5,13 @@
 #include "TextureManager.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"
-#include "MenuState.h"
+#include "MainMenuState.h"
 #include "PlayState.h"
 #include "PauseState.h"
 #include "GameOverState.h"
+
+#include "GameObjectFactory.h"
+
 #include "Player.h"
 #include "Enemy.h"
 #include "AnimatedGraphic.h"
