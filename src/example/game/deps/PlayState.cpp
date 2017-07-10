@@ -36,27 +36,8 @@ void PlayState::handleEvents()
 
 bool PlayState::onEnter()
 {
-	
-		if(!TheTextureManager::Instance()->load("assets/helicopter.png",
-		"helicopter", TheGame::Instance()->getRenderer()))
-		{
-			return false;
-		}
-
-		if(!TheTextureManager::Instance()->load("assets/helicopter2.png",
-		"helicopter2", TheGame::Instance()->getRenderer()))
-		{
-			return false;
-		}
-
-		GameObject* player = new Player();
-		player->load(new LoaderParams(500, 100, 128, 55, "helicopter"));
-
-		GameObject* enemy = new Enemy();
-		enemy->load(new LoaderParams(100, 100, 128, 55, "helicopter2"));
-
-		m_gameObjects.push_back(player);
-		m_gameObjects.push_back(enemy);
+	StateParser stateParser;
+	stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
 	printf("entering PlayState\n");
 	return true;
