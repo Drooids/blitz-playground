@@ -37,7 +37,7 @@ void PlayState::handleEvents()
 bool PlayState::onEnter()
 {
 	StateParser stateParser;
-	stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
+	stateParser.parseState("assets/test.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
 	printf("entering PlayState\n");
 	return true;
