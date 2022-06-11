@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -g -shared -Wl,-soname,libwhereami.so -o ../lib/libwhereami.so CMakeFiles/whereami.dir/whereami/src/whereami.c.o   -L/home/dud3/git/gameprog/blitz-playground/lib 

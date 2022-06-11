@@ -1,0 +1,15 @@
+/home/dud3/git/gameprog/blitz-playground/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/CMakeFiles/rebuild_cache.dir
+/home/dud3/git/gameprog/blitz-playground/dependencies/CMakeFiles/whereami.dir
+/home/dud3/git/gameprog/blitz-playground/dependencies/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/dependencies/CMakeFiles/rebuild_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/CMakeFiles/rebuild_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/CMakeFiles/rebuild_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/test/CMakeFiles/game.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/test/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/test/CMakeFiles/rebuild_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/game/CMakeFiles/main.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/game/CMakeFiles/edit_cache.dir
+/home/dud3/git/gameprog/blitz-playground/src/example/game/CMakeFiles/rebuild_cache.dir

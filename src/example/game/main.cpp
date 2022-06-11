@@ -17,9 +17,7 @@ int main(int argc, char *argv[])
     // SDL_WINDOW_FULLSCREEN_DESKTOP
     // SDL_WINDOW_BORDERLESS
     if(TheGame::Instance()->init("Ch 1", 100, 100, 640, 480, 0)) {
-
         while(TheGame::Instance()->running()) {
-
 			frameStart = SDL_GetTicks();
 
             TheGame::Instance()->handleEvents();
@@ -40,7 +38,6 @@ int main(int argc, char *argv[])
 				SDL_Delay((int)(DELAY_TIME - frameTime));
 			}
         }
-
     } else {
         cout << SDL_GetError() << "\n";
     }

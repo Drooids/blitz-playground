@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.22)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
@@ -169,7 +169,7 @@ IF(MSVC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Wp64")
 endif()
 
-find_package(OpenGL REQUIRED)
+find_package(OpenGL REQUIRED COMPONENTS OpenGL EGL)
 
 set(BLITZ_LIBS
     ${OPENGL_LIBRARY}

@@ -7,15 +7,15 @@ int main(int argc, char *argv[]) {
     SDL_Renderer *renderer = NULL;
     SDL_Texture *bitmapTex = NULL;
     SDL_Surface *bitmapSurface = NULL;
-    int posX = 100, posY = 100, width = 320, height = 240;
+    int posX = 64, posY = 64, width = 1024, height = 576;
 
     SDL_Init(SDL_INIT_VIDEO);
 
-    win = SDL_CreateWindow("Hello World", posX, posY, width, height, 0);
+    win = SDL_CreateWindow("Test image load", posX, posY, width, height, 0);
 
     renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
 
-    bitmapSurface = SDL_LoadBMP("img/hello.bmp");
+    bitmapSurface = SDL_LoadBMP("img/sample_1280_853.bmp");
     bitmapTex = SDL_CreateTextureFromSurface(renderer, bitmapSurface);
     SDL_FreeSurface(bitmapSurface);
 

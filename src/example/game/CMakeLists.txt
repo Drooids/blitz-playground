@@ -1,3 +1,7 @@
+message("-- Game folder dependencies")
+message("-- ${CMAKE_CURRENT_SOURCE_DIR}")
+message("")
+
 include_directories(deps)
 
 SET(DEPS
