@@ -1,5 +1,4 @@
 .DS_Store
-CMakeCache.txt
 *.a
 *.dylib
 ignore_folder/
@@ -17,3 +16,43 @@ local.properties
 .vs/
 imgui.ini
 .c9/
+
+# Cmake
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+**/cmake-build-debug
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/install_manifest.txt
+**/CMakeFiles/
+**/CTestTestfile.cmake
+**/Makefile
+**/*.cbp
+**/CMakeScripts
+**/compile_commands.json
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Local
+
+.idea/*.xml
+
+build/**/*
+
+include/*
+lib/*
+bin/*
+test/test_runner
